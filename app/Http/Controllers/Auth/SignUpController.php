@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Hash;
 
 class SignUpController extends Controller
@@ -28,7 +29,15 @@ class SignUpController extends Controller
             'surname' => 'required|max:255',
             'username' => 'required|max:255',
             'email' => 'required|email|max:255',
-            'password' => 'required|confirmed',
+            'password' => [
+                'required',
+                'confirmed',
+                Password::min(8)
+                    ->mixedCase()
+                    ->letters()
+                    ->numbers()
+                    ->symbols(),
+            ],
         ]);
 
         // Store user in the database
