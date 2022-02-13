@@ -5,9 +5,9 @@
 @section('content')
 <div class="row">
     <div class="col-12">
-        <h1>Dashboard</h1>
+        <h1>Students</h1>
+        <a href="" class="btn btn-dark">Add new student</a>
 
-        <a href="{{ route('students') }}" class="btn btn-dark">View students</a>
     </div>
 </div>
 @endsection

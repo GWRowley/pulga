@@ -71,6 +71,7 @@
 
     <main role="main" class="bg-white py-3">
         <div class="container">
+            @include('partials.alerts')
             @yield('content')  
         </div>
     </main>
