@@ -23,7 +23,7 @@
                     <label for="surname" class="form-label">Surname:</label>
                     <input type="text" name="surname" id="surname" placeholder="Gracie" class="form-control @error('surname') is-invalid @enderror" value="{{ old('surname') }}">
 
-                    @error('name')
+                    @error('surname')
                         <p class="mt-1 invalid-feedback">{{ $message }}</p>
                     @enderror
                 </div>

@@ -5,7 +5,7 @@ use App\Http\Controllers\Auth\SignInController;
 use App\Http\Controllers\Auth\SignOutController;
 use App\Http\Controllers\Auth\SignUpController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\StudentController;
+use App\Http\Controllers\MemberController;
 
 // Home
 Route::get('/', function () {
@@ -26,6 +26,7 @@ Route::post('/sign-up', [SignUpController::class, 'store']);
 // Dashboard
 Route::get('/dashboard', [DashboardController:: class, 'index'])->name('dashboard');
 
-// Students
-Route::get('/students', [StudentController:: class, 'index'])->name('students');
-Route::get('/add-new-student', [StudentController:: class, 'add'])->name('add-new-student');
+// Members
+Route::get('/members', [MemberController:: class, 'index'])->name('members');
+Route::get('/add-new-member', [MemberController:: class, 'add'])->name('add-new-member');
+Route::post('/add-new-member', [MemberController::class, 'store']);
