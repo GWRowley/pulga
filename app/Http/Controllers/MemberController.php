@@ -8,6 +8,12 @@ use App\Models\Member;
 
 class MemberController extends Controller
 {
+    // Only viewable if logged in
+    public function __construct()
+    {
+        $this->middleware(['auth']);
+    }
+
     // All members view
     public function index() {
         $members = Member::select('id', 'name', 'surname')->get();
