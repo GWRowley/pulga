@@ -28,3 +28,4 @@ Route::get('/dashboard', [DashboardController:: class, 'index'])->name('dashboar
 
 // Students
 Route::get('/students', [StudentController:: class, 'index'])->name('students');
+Route::get('/add-new-student', [StudentController:: class, 'add'])->name('add-new-student');
