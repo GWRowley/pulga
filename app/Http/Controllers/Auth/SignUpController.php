@@ -27,7 +27,6 @@ class SignUpController extends Controller
         $this->validate($request, [
             'name' => 'required|max:255',
             'surname' => 'required|max:255',
-            'username' => 'required|max:255',
             'email' => 'required|email|max:255',
             'password' => [
                 'required',
@@ -44,7 +43,6 @@ class SignUpController extends Controller
         User::create([
             'name' => $request->name,
             'surname' => $request->surname,
-            'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);

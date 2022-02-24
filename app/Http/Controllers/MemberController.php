@@ -17,6 +17,11 @@ class MemberController extends Controller
     // All members view
     public function index() {
         $members = Member::select('id', 'name', 'surname')->get();
+        // Show members in alphabetical order
+        $members = DB::table('members')
+                ->orderBy('name', 'asc')
+                ->orderBy('surname', 'asc')
+                ->get();
         
         return view('members.index')->with([
             'members' => $members

@@ -5,69 +5,64 @@
 
 @section('content')
     <div class="row">
-        <div class="col-12">
-            <h1 class="mb-3">Sign up</h1>
+        <div class="offset-1 col-10 offset-md-2 col-md-8 offset-lg-3 col-lg-6"> 
+            <div class="form-panel bg-white shadow-sm my-5">
+                    <h1 class="fs-3 text-center mb-4">Sign up</h1>
 
-            <form action="{{ route('sign-up') }}" method="post">
-                @csrf
-                <div class="mb-3">
-                    <label for="name" class="form-label">Name:</label>
-                    <input type="text" name="name" id="name" placeholder="Rickson" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
+                <form action="{{ route('sign-up') }}" method="post">
+                    @csrf
+                    <div class="mb-4">
+                        <label for="name" class="form-label">First name</label>
+                        <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
 
-                    @error('name')
-                        <p class="mt-1 invalid-feedback">{{ $message }}</p>
-                    @enderror
-                </div>
+                        @error('name')
+                            <p class="mt-1 invalid-feedback fw-bold">{{ $message }}</p>
+                        @enderror
+                    </div>
 
-                 <div class="mb-3">
-                    <label for="surname" class="form-label">Surname:</label>
-                    <input type="text" name="surname" id="surname" placeholder="Gracie" class="form-control @error('surname') is-invalid @enderror" value="{{ old('surname') }}">
+                    <div class="mb-4">
+                        <label for="surname" class="form-label">Last name</label>
+                        <input type="text" name="surname" id="surname" class="form-control @error('surname') is-invalid @enderror" value="{{ old('surname') }}">
 
-                    @error('surname')
-                        <p class="mt-1 invalid-feedback">{{ $message }}</p>
-                    @enderror
-                </div>
+                        @error('surname')
+                            <p class="mt-1 invalid-feedback fw-bold">{{ $message }}</p>
+                        @enderror
+                    </div>
 
-                <div class="mb-3">
-                    <label for="username" class="form-label">Username:</label>
-                    <input type="text" name="username" id="username" placeholder="Username" class="form-control @error('username') is-invalid @enderror" value="{{ old('username') }}">
+                    <div class="mb-4">
+                        <label for="email" class="form-label">Email address</label>
+                        <input type="text" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}">
 
-                    @error('username')
-                        <p class="mt-1 invalid-feedback">{{ $message }}</p>
-                    @enderror
-                </div>
+                        @error('email')
+                            <p class="mt-1 invalid-feedback fw-bold">{{ $message }}</p>
+                        @enderror
+                    </div>
 
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email address:</label>
-                    <input type="text" name="email" id="email" placeholder="hello@email.com" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}">
+                    <div class="mb-4">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" value="">
+                        
+                        @error('password')
+                            <p class="mt-1 invalid-feedback fw-bold">{{ $message }}</p>
+                        @enderror
+                    </div>
 
-                    @error('email')
-                        <p class="mt-1 invalid-feedback">{{ $message }}</p>
-                    @enderror
-                </div>
+                    <div class="mb-4">
+                        <label for="password_confirmation" class="form-label">Confirm your password</label>
+                        <input type="password" name="password_confirmation" id="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror" value="">
 
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password:</label>
-                    <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" value="">
+                        <div id="password-help" class="form-text">Your password must be at least 8 characters long, and contain at least one upper case letter, a number, and a symbol.</div>
+                        
+                        @error('password_confirmation')
+                            <p class="mt-1 invalid-feedback fw-bold">{{ $message }}</p>
+                        @enderror
+                    </div>
 
-                    @error('password')
-                        <p class="mt-1 invalid-feedback">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <div class="mb-3">
-                    <label for="password_confirmation" class="form-label">Confirm your password:</label>
-                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror" value="">
-
-                    @error('password_confirmation')
-                        <p class="mt-1 invalid-feedback">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <div>
-                    <button type="submit" class="btn btn-dark">Sign up</button>
-                </div>
-            </form>
+                    <div>
+                        <button type="submit" class="btn btn-dark mt-3">Sign up</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 @endsection

@@ -32,7 +32,5 @@ class SignInController extends Controller
         }
         
         return redirect()->route('dashboard');
-
-        dd('ok');
     }
 }
