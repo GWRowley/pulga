@@ -26,10 +26,10 @@
             <tbody>
                 @foreach ($members as $member)
                 <tr>
-                    <td class="align-middle">{{ $member->name}}</td>
-                    <td class="align-middle">{{ $member->surname}}</td>
-                    <td class="align-middle">Purple</td>
-                    <td class="align-middle">Unlimited</td>
+                    <td class="align-middle">{{ $member->name }}</td>
+                    <td class="align-middle">{{ $member->surname }}</td>
+                    <td class="align-middle">{{ $member->belt }}</td>
+                    <td class="align-middle">{{ $member->membership }}</td>
                     <td class="align-middle"><a href="{{ route('members') }}/profile/{{ $member->id}}" class="btn btn-dark">View</a></td>
                 </tr>
                 @endforeach

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Member;
@@ -39,38 +40,43 @@ class MemberController extends Controller
 
     // Add members view
     public function add() {
-
         return view('members.add-member');
     }
 
     // Storing a new member
-    public function store(Request $request) {
-        // Validate form submission
-        $request->validate([
+
+    public function store(Request $request)
+    {   
+        // Validation for sign up form
+        $this->validate($request, [
             'name' => 'required|max:255',
-            'surname' => 'required|max:255'
+            'surname' => 'required|max:255',
+            'dob' => 'required|before_or_equal:today',
+            'gender' => 'required|max:6',
+            'emergencyContact' => 'required|max:255',
+            'emergencyNumber' => 'required|max:20',
+            'medicalInformation' => 'max:255',
+            'belt' => 'required|max:6',
+            'membership' => 'required|max:255',
+            'memberSince' => 'required|before_or_equal:today'
         ]);
-        
-        try {
-            // Save member data
-            DB::beginTransaction();
-             $add_member = Member::create([
+
+        // Store user in the database
+        Member::create([
             'name' => $request->name,
-            'surname' => $request->surname
+            'surname' => $request->surname,
+            'dob' => $request->dob,
+            'gender' => $request->gender,
+            'emergencyContact' => $request->emergencyContact,
+            'emergencyNumber' => $request->emergencyNumber,
+            'medicalInformation' => $request->medicalInformation,
+            'belt' => $request->belt,
+            'membership' => $request->membership,
+            'memberSince' => $request->memberSince
         ]);
-        
-        // If unsuccessful show error message
-        if(!$add_member){
-            DB::rollBack();
-            return back()->with('danger', 'Something went wrong whilst adding new member');
-        }
 
-        // If successful, redirect to all members and show success banner
-        DB::commit();
-        return redirect()->route('members')->with('success', 'New member added');
-
-        } catch (\Throwable $th) {
-            DB::rollBack();
-        }
+        // Sign in and redirect the user
+       
+        return redirect()->route('members');
     }
 }

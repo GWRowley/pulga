@@ -21,7 +21,7 @@
 
         <div class="col-12 col-lg-8">
             <div class="mb-4">
-                <label for="name" class="form-label">First name</label>
+                <label for="name" class="form-label" autocomplete="off">First name</label>
                 <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
 
                 @error('name')
@@ -53,14 +53,14 @@
                 </legend>
                 
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="gender" id="gender-male">
-                    <label class="form-check-label" for="gender-male">
+                    <input class="form-check-input @error('gender') is-invalid @enderror" type="radio" name="gender" id="genderMale" value="Male" checked>
+                    <label class="form-check-label" for="genderMale">
                         Male
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="gender" id="gender-female">
-                    <label class="form-check-label" for="gender-female">
+                    <input class="form-check-input  @error('gender') is-invalid @enderror" type="radio" name="gender" id="genderFemale" value="Female">
+                    <label class="form-check-label" for="genderFemale">
                         Female
                     </label>
                 </div>
@@ -80,27 +80,27 @@
 
         <div class="col-12 col-lg-8">
             <div class="mb-4">
-                <label for="emergency-contact" class="form-label">Emergency contact name</label>
-                <input type="text" name="emergency-contact" id="emergency-contact" class="form-control @error('emergency-contacy') is-invalid @enderror" value="{{ old('emergency-contact') }}">
+                <label for="emergencyContact" class="form-label">Emergency contact name</label>
+                <input type="text" name="emergencyContact" id="emergencyContact" class="form-control @error('emergencyContact') is-invalid @enderror" value="{{ old('emergencyContact') }}">
 
-                @error('emergency-contact')
+                @error('emergencyContact')
                     <p class="mt-1 invalid-feedback fw-bold">{{ $message }}</p>
                 @enderror
             </div>
 
             <div class="mb-4">
-                <label for="emergency-number" class="form-label">Emergency contact number</label>
-                <input type="tel" name="emergency-number" id="emergency-number" class="form-control @error('emergency-number') is-invalid @enderror" value="{{ old('emergency-number') }}">
+                <label for="emergencyNumber" class="form-label">Emergency contact number</label>
+                <input type="tel" name="emergencyNumber" id="emergencyNumber" class="form-control @error('emergencyNumber') is-invalid @enderror" value="{{ old('emergencyNumber') }}">
 
-                @error('emergency-number')
+                @error('emergencyNumber')
                     <p class="mt-1 invalid-feedback fw-bold">{{ $message }}</p>
                 @enderror
             </div>
 
             <div class="mb-4">
-                <label for="medical-information" class="form-label">Medical conditions</label>
-                <textarea rows="3" name="medical-information" id="medical-information" class="form-control" value="{{ old('name') }}"></textarea>
-                <div id="password-help" class="form-text">This field is optional, only add details if necessary.</div>
+                <label for="medicalInformation" class="form-label">Medical conditions</label>
+                <textarea rows="3" name="medicalInformation" id="medicalInformation" class="form-control" value="{{ old('medicalInformation') }}"></textarea>
+                <div id="medical-info-help" class="form-text">This field is optional, only add details if necessary.</div>
             </div>
         </div>
 
@@ -114,13 +114,13 @@
         <div class="col-12 col-lg-8">
             <div class="mb-4">
                 <p id="belt-label" class="form-label">Current belt</p>
-                <select name="current-belt" id="current-belt" class="form-select" aria-labelledby="belt-label">
+                <select name="belt" id="belt" class="form-select  @error('belt') is-invalid @enderror" aria-labelledby="belt-label">
                     
-                    <option value="white" selected>White</option>
-                    <option value="blue">Blue</option>
-                    <option value="purple">Purple</option>
-                    <option value="brown">Brown</option>
-                    <option value="black">Black</option>
+                    <option value="White" selected>White</option>
+                    <option value="Blue">Blue</option>
+                    <option value="Purple">Purple</option>
+                    <option value="Brown">Brown</option>
+                    <option value="Black">Black</option>
                     </select>
                 @error('belt')
                     <p class="mt-1 invalid-feedback fw-bold">{{ $message }}</p>
@@ -133,20 +133,20 @@
                 </legend>
                 
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="membership" id="membership-basic" checked>
-                    <label class="form-check-label" for="membership-basic">
+                    <input class="form-check-input  @error('membership') is-invalid @enderror" type="radio" name="membership" id="membershipBasic" value="Basic" checked>
+                    <label class="form-check-label" for="membershipBasic">
                         Basic
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="membership" id="membership-unlimited">
-                    <label class="form-check-label" for="membership-unlimited">
+                    <input class="form-check-input  @error('membership') is-invalid @enderror" type="radio" name="membership" id="membershipUnlimited" value="Unlimited">
+                    <label class="form-check-label" for="membershipUnlimited">
                         Unlimited
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="membership" id="membership-inactive">
-                    <label class="form-check-label" for="membership-inactive">
+                    <input class="form-check-input  @error('membership') is-invalid @enderror" type="radio" name="membership" id="membershipInactive" value="Inactive">
+                    <label class="form-check-label" for="membershipInactive">
                         Inactive
                     </label>
                 </div>
@@ -157,8 +157,12 @@
             </fieldset>
 
             <div class="mb-4">
-                <label for="member-since" class="form-label">Member since</label>
-                <input type="date" name="member-since" id="member-since" class="form-control @error('member-since') is-invalid @enderror" value="{{ old('member-since') }}">
+                <label for="memberSince" class="form-label">Member since</label>
+                <input type="date" name="memberSince" id="memberSince" class="form-control @error('memberSince') is-invalid @enderror" value="{{ old('memberSince') }}">
+
+                @error('memberSince')
+                    <p class="mt-1 invalid-feedback fw-bold">{{ $message }}</p>
+                @enderror
             </div>
         </div>
 
