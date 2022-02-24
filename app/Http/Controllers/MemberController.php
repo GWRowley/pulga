@@ -28,8 +28,18 @@ class MemberController extends Controller
         ]);
     }
 
+    // View single member profile
+    public function show($id) {
+        $member = Member::findOrFail($id);
+
+        return view('members.member-profile')->with([
+            'member' => $member
+        ]);
+    }
+
     // Add members view
     public function add() {
+
         return view('members.add-member');
     }
 

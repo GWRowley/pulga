@@ -113,8 +113,8 @@
 
         <div class="col-12 col-lg-8">
             <div class="mb-4">
-                <p id="belt-label" class="form-label">Belt</p>
-                <select name="belt" id="belt" class="form-select" aria-labelledby="belt-label">
+                <p id="belt-label" class="form-label">Current belt</p>
+                <select name="current-belt" id="current-belt" class="form-select" aria-labelledby="belt-label">
                     
                     <option value="white" selected>White</option>
                     <option value="blue">Blue</option>

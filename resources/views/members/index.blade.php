@@ -12,34 +12,29 @@
 </div>
 
 <div class="row">
-    @foreach ($members as $member)
-    <div class="col-12 col-sm-6 col-xl-3 mb-4">
-        <div class="member-card shadow-sm h-100">
-            <div class="member-image">
-                <img src="https://via.placeholder.com/200x150" alt="{{ $member->name}} {{ $member->surname}}">
-            </div>
-            
-            <div class="member-content">
-                <div class="member-name mb-4">
-                    <h2 class="fs-5">
-                        {{ $member->name}} {{ $member->surname}}
-                    </h2>
-                </div>
-                
-                <div class="d-block">     
-                    <div class="member-details">
-                        <h3>Belt</h3>
-                        <p>Purple</p>
-                    </div>
-
-                    <div class="member-details">
-                        <h3>Membership</h3>
-                        <p>Unlimited</p>
-                    </div>
-                </div>
-            </div>
-        </div>    
+    <div class="col-12">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">First name</th>
+                    <th scope="col">Last name</th>
+                    <th scope="col">Belt</th>
+                    <th scope="col">Membership</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($members as $member)
+                <tr>
+                    <td class="align-middle">{{ $member->name}}</td>
+                    <td class="align-middle">{{ $member->surname}}</td>
+                    <td class="align-middle">Purple</td>
+                    <td class="align-middle">Unlimited</td>
+                    <td class="align-middle"><a href="{{ route('members') }}/profile/{{ $member->id}}" class="btn btn-dark">View</a></td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
-    @endforeach
 </div>
 @endsection
