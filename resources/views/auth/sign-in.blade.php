@@ -3,12 +3,14 @@
 @section('pageTitle', 'Sign in')
 
 @section('content')
+
 @if (session('status'))
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        {{ session('status') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{ session('status') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
 @endif
+
 <div class="row">
     <div class="offset-1 col-10 offset-md-2 col-md-8 offset-lg-3 col-lg-6"> 
         <div class="form-panel bg-white shadow-sm my-5">
