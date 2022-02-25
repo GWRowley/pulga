@@ -12,10 +12,13 @@
 @endif
 
 <div class="row">
+    <div class="col-12 mt-5">
+        <h1 class="fs-3 text-center">Sign in to your account</h1>
+        <p class="text-center">Or <a href="{{ route('sign-up') }}" class="link-dark">sign up today</a></p>
+    </div>
     <div class="offset-1 col-10 offset-md-2 col-md-8 offset-lg-3 col-lg-6"> 
         <div class="form-panel bg-white shadow-sm my-5">
-            <h1 class="fs-3 text-center mb-4">Welcome back!</h1>
-
+            
             <form action="{{ route('sign-in') }}" method="post">
                 @csrf
                 <div class="mb-4">

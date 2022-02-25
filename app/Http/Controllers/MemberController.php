@@ -77,6 +77,6 @@ class MemberController extends Controller
 
         // Sign in and redirect the user
        
-        return redirect()->route('members');
+        return redirect()->route('members')->with('success', 'New member successfully added.');
     }
 }

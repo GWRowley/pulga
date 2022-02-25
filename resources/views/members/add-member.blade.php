@@ -5,6 +5,14 @@
 @section('content')
 <div class="row">
     <div class="col-12">
+            <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="link-dark"><i class="fa-solid fa-house"></i> <span class="visually-hidden">Dashboard</span></a></li>
+                <li class="breadcrumb-item"><a href="{{ route('members') }}" class="link-dark text-decoration-none">Members</a></li>
+                <li class="breadcrumb-item" aria-current="page">Add new member</li>
+            </ol>
+        </nav>
+
         <h1 class="mb-4 fs-3">Add new member</h1>
     </div>
 </div>
@@ -15,7 +23,7 @@
     @csrf
     <div class="row">
         <div class="col-12 col-lg-4">
-            <h2 class="fs-4">Personal information</h2>
+            <h2 class="fs-5">Personal information</h2>
             <p>This is basic information about the member.</p>
         </div>
 
@@ -74,7 +82,7 @@
         <hr> <!-- End of personal information -->
 
         <div class="col-12 col-lg-4">
-            <h2 class="fs-4">Additional information</h2>
+            <h2 class="fs-5">Additional information</h2>
             <p>This is basic information about the member.</p>
         </div>
 
@@ -107,7 +115,7 @@
         <hr> <!-- End of additional information -->
 
         <div class="col-12 col-lg-4">
-            <h2 class="fs-4">Membership information</h2>
+            <h2 class="fs-5">Membership information</h2>
             <p>This is basic information about the member.</p>
         </div>
 
@@ -137,18 +145,24 @@
                     <label class="form-check-label" for="membershipBasic">
                         Basic
                     </label>
+                    <div id="basic-membership-help" class="form-text radio-help">£60 for 12 classes per month.</div>
+                    <hr>
                 </div>
+
                 <div class="form-check">
                     <input class="form-check-input  @error('membership') is-invalid @enderror" type="radio" name="membership" id="membershipUnlimited" value="Unlimited">
                     <label class="form-check-label" for="membershipUnlimited">
                         Unlimited
                     </label>
+                    <div id="unlimited-membership-help" class="form-text radio-help">£75 for unlimited classes per month.</div>
+                    <hr>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input  @error('membership') is-invalid @enderror" type="radio" name="membership" id="membershipInactive" value="Inactive">
                     <label class="form-check-label" for="membershipInactive">
                         Inactive
                     </label>
+                    <div id="basic-membership-help" class="form-text radio-help">Member currently has no active membership.</div>
                 </div>
                 
                 @error('membership')

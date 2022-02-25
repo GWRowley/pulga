@@ -5,10 +5,12 @@
 
 @section('content')
     <div class="row">
+        <div class="col-12">
+            <h1 class="fs-3 text-center mt-5">Sign up for an account</h1>
+            <p class="text-center">Or if you already have an account, <a href="{{ route('sign-in') }}" class="link-dark">sign in</a></p>
+        </div>
         <div class="offset-1 col-10 offset-md-2 col-md-8 offset-lg-3 col-lg-6"> 
             <div class="form-panel bg-white shadow-sm my-5">
-                    <h1 class="fs-3 text-center mb-4">Sign up</h1>
-
                 <form action="{{ route('sign-up') }}" method="post">
                     @csrf
                     <div class="mb-4">

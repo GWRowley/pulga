@@ -43,6 +43,25 @@ label.form-check-label {
     cursor: pointer;
 }
 
+.radio-help {
+    margin-left: 1rem;
+    margin-top: 0px;
+    margin-bottom: 1rem;
+}
+
+/* Breadcrumbs */
+
+.breadcrumb-item+.breadcrumb-item {
+    padding-left: 0.75rem;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    float: left;
+    padding-right: 0.75rem;
+    color: #6c757d;
+    content: var(--bs-breadcrumb-divider, "/");
+}
+
 /* Member cards */
 
 .member-card {
