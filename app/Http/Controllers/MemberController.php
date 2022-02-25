@@ -32,9 +32,11 @@ class MemberController extends Controller
     // View single member profile
     public function show($id) {
         $member = Member::findOrFail($id);
+        $age = Carbon::parse($member->dob)->diff(Carbon::now())->y;
 
         return view('members.member-profile')->with([
-            'member' => $member
+            'member' => $member,
+            'age' => $age
         ]);
     }
 
@@ -53,12 +55,12 @@ class MemberController extends Controller
             'surname' => 'required|max:255',
             'dob' => 'required|before_or_equal:today',
             'gender' => 'required|max:6',
-            'emergencyContact' => 'required|max:255',
-            'emergencyNumber' => 'required|max:20',
-            'medicalInformation' => 'max:255',
             'belt' => 'required|max:6',
             'membership' => 'required|max:255',
-            'memberSince' => 'required|before_or_equal:today'
+            'memberSince' => 'required|before_or_equal:today',
+            'emergencyContact' => 'required|max:255',
+            'emergencyNumber' => 'required|max:20',
+            'medicalInformation' => 'max:255'
         ]);
 
         // Store user in the database
@@ -67,12 +69,12 @@ class MemberController extends Controller
             'surname' => $request->surname,
             'dob' => $request->dob,
             'gender' => $request->gender,
-            'emergencyContact' => $request->emergencyContact,
-            'emergencyNumber' => $request->emergencyNumber,
-            'medicalInformation' => $request->medicalInformation,
             'belt' => $request->belt,
             'membership' => $request->membership,
-            'memberSince' => $request->memberSince
+            'memberSince' => $request->memberSince,
+            'emergencyContact' => $request->emergencyContact,
+            'emergencyNumber' => $request->emergencyNumber,
+            'medicalInformation' => $request->medicalInformation
         ]);
 
         // Sign in and redirect the user

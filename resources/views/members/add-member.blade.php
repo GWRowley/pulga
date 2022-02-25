@@ -81,40 +81,7 @@
         
         <hr> <!-- End of personal information -->
 
-        <div class="col-12 col-lg-4">
-            <h2 class="fs-5">Additional information</h2>
-            <p>This is basic information about the member.</p>
-        </div>
-
-        <div class="col-12 col-lg-8">
-            <div class="mb-4">
-                <label for="emergencyContact" class="form-label">Emergency contact name</label>
-                <input type="text" name="emergencyContact" id="emergencyContact" class="form-control @error('emergencyContact') is-invalid @enderror" value="{{ old('emergencyContact') }}">
-
-                @error('emergencyContact')
-                    <p class="mt-1 invalid-feedback fw-bold">{{ $message }}</p>
-                @enderror
-            </div>
-
-            <div class="mb-4">
-                <label for="emergencyNumber" class="form-label">Emergency contact number</label>
-                <input type="tel" name="emergencyNumber" id="emergencyNumber" class="form-control @error('emergencyNumber') is-invalid @enderror" value="{{ old('emergencyNumber') }}">
-
-                @error('emergencyNumber')
-                    <p class="mt-1 invalid-feedback fw-bold">{{ $message }}</p>
-                @enderror
-            </div>
-
-            <div class="mb-4">
-                <label for="medicalInformation" class="form-label">Medical conditions</label>
-                <textarea rows="3" name="medicalInformation" id="medicalInformation" class="form-control" value="{{ old('medicalInformation') }}"></textarea>
-                <div id="medical-info-help" class="form-text">This field is optional, only add details if necessary.</div>
-            </div>
-        </div>
-
-        <hr> <!-- End of additional information -->
-
-        <div class="col-12 col-lg-4">
+                <div class="col-12 col-lg-4">
             <h2 class="fs-5">Membership information</h2>
             <p>This is basic information about the member.</p>
         </div>
@@ -179,6 +146,41 @@
                 @enderror
             </div>
         </div>
+
+        <hr> <!-- End of membership information -->
+
+        <div class="col-12 col-lg-4">
+            <h2 class="fs-5">Additional information</h2>
+            <p>This is basic information about the member.</p>
+        </div>
+
+        <div class="col-12 col-lg-8">
+            <div class="mb-4">
+                <label for="emergencyContact" class="form-label">Emergency contact name</label>
+                <input type="text" name="emergencyContact" id="emergencyContact" class="form-control @error('emergencyContact') is-invalid @enderror" value="{{ old('emergencyContact') }}">
+
+                @error('emergencyContact')
+                    <p class="mt-1 invalid-feedback fw-bold">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <div class="mb-4">
+                <label for="emergencyNumber" class="form-label">Emergency contact number</label>
+                <input type="tel" name="emergencyNumber" id="emergencyNumber" class="form-control @error('emergencyNumber') is-invalid @enderror" value="{{ old('emergencyNumber') }}">
+
+                @error('emergencyNumber')
+                    <p class="mt-1 invalid-feedback fw-bold">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <div class="mb-4">
+                <label for="medicalInformation" class="form-label">Medical conditions</label>
+                <textarea rows="3" name="medicalInformation" id="medicalInformation" class="form-control" value="{{ old('medicalInformation') }}"></textarea>
+                <div id="medical-info-help" class="form-text">This field is optional, only add details if necessary.</div>
+            </div>
+        </div>
+
+
 
         <div class="col-12 offset-lg-4 col-lg-8">
             <button type="submit" class="btn btn-dark">Add member</button>

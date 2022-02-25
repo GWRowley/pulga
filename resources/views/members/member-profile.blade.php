@@ -13,17 +13,51 @@
             </ol>
         </nav>
 
-        <h1>
-            {{ $member->name }} {{ $member->surname }}
-        </h1>
+        <div class="member-profile-header my-4 clearfix">     
+            <div class="member-profile-image">
+                <img src="https://via.placeholder.com/90" class="rounded-circle img-thumbnail d-inline-block" alt="{{ $member->name }} {{ $member->surname }}">
+            </div>   
+            <div class="member-profile-name">
+                <h1>
+                    {{ $member->name }} {{ $member->surname }}
+                </h1>
+                <p>
+                    Member since {{ \Carbon\Carbon::parse($member->memberSince)->format('jS F Y') }}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
 
-        <p>
-            {{ $member->belt }} belt
-        </p>
+<div class="row">
+    <div class="col-12 col-lg-8">
+        <div class="content-panel bg-white shadow-sm">
+            <h2 class="lh-1 fs-4">Member details</h2>
+            <p>Personal and membership information.</p>
+            <hr class="mb-4">
 
-        <p>
-            {{ $member->membership }} membership
-        </p>
+            <div class="row">      
+                <div class="col-12 col-lg-6">
+                    <p class="fw-bold mb-0">Age</p>
+                    <p>{{ $age }}</p>
+                </div>
+
+                <div class="col-12 col-lg-6">
+                    <p class="fw-bold mb-0">Gender</p>
+                    <p>{{ $member->gender }}</p>
+                </div>
+
+                <div class="col-12 col-lg-6">
+                    <p class="fw-bold mb-0">Current belt</p>
+                    <p class="mb-0">{{ $member->belt }} belt</p>
+                </div>
+
+                <div class="col-12 col-lg-6">
+                    <p class="fw-bold mb-0">Membership level</p>
+                    <p class="mb-0">{{ $member->membership }}</p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection

@@ -18,12 +18,12 @@ class CreateMembersTable extends Migration
             $table->string('surname');
             $table->date('dob');
             $table->string('gender');
-            $table->string('emergencyContact');
-            $table->string('emergencyNumber');
-            $table->string('medicalInformation')->nullable();
             $table->string('belt');
             $table->string('membership');
             $table->date('memberSince');
+            $table->string('emergencyContact');
+            $table->string('emergencyNumber');
+            $table->string('medicalInformation')->nullable();
             $table->timestamps();
         });
     }

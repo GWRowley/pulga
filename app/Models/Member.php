@@ -13,12 +13,12 @@ class Member extends Model
         'surname',
         'dob',
         'gender',
-        'emergencyContact',
-        'emergencyNumber',
-        'medicalInformation',
         'belt',
         'membership',
-        'memberSince'
+        'memberSince',
+        'emergencyContact',
+        'emergencyNumber',
+        'medicalInformation'
     ];
 }
 // Format date of birth for storing in DB
@@ -31,4 +31,10 @@ function setDobAttribute($value)
 function setMemberSinceAttribute($value)
 {
     $this->attributes['memberSince'] = Card::createFromFormat('d/m/Y', $value)->format('Y-m-d');
+}
+
+// Convert date of birth to age
+function age()
+{
+    return Carbon::parse($this->attributes['dob'])->age;
 }

@@ -17,7 +17,7 @@
         <p class="text-center">Or <a href="{{ route('sign-up') }}" class="link-dark">sign up today</a></p>
     </div>
     <div class="offset-1 col-10 offset-md-2 col-md-8 offset-lg-3 col-lg-6"> 
-        <div class="form-panel bg-white shadow-sm my-5">
+        <div class="content-panel bg-white shadow-sm my-5">
             
             <form action="{{ route('sign-in') }}" method="post">
                 @csrf
