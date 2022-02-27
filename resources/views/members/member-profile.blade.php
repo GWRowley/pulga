@@ -31,9 +31,9 @@
 
 <div class="row">
     <div class="col-12 col-lg-8">
-        <div class="content-panel bg-white shadow-sm">
+        <div class="content-panel bg-white shadow-sm mb-4">
             <h2 class="lh-1 fs-4">Member details</h2>
-            <p>Personal and membership information.</p>
+            <p>Personal and membership information</p>
             <hr class="mb-4">
 
             <div class="row">      
@@ -49,12 +49,72 @@
 
                 <div class="col-12 col-lg-6">
                     <p class="fw-bold mb-0">Current belt</p>
-                    <p class="mb-0">{{ $member->belt }} belt</p>
+                    <p class="mb-0">{{ $member->belt }}</p>
                 </div>
 
                 <div class="col-12 col-lg-6">
                     <p class="fw-bold mb-0">Membership level</p>
                     <p class="mb-0">{{ $member->membership }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-panel bg-white shadow-sm mb-4">
+            <h2 class="lh-1 fs-4">Additional details</h2>
+            <p>Emergency contact details and medical information</p>
+            <hr class="mb-4">
+
+            <div class="row">      
+                <div class="col-12 col-lg-6">
+                    <p class="fw-bold mb-0">Emergency contact</p>
+                    <p>{{ $member->emergencyContact }}</p>
+                </div>
+
+                <div class="col-12 col-lg-6">
+                    <p class="fw-bold mb-0">Emergency contact number</p>
+                    <p>{{ $member->emergencyNumber }}</p>
+                </div>
+                
+                <div class="col-12">
+                    <p class="fw-bold mb-0">Medical conditions</p>
+                    <p class="mb-0">
+                        @if ($member->medicalInformation)
+                        {{ $member->medicalInformation }}
+                        @else 
+                        N/A
+                        @endif
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-lg-4">
+        <div class="content-panel bg-white shadow-sm mb-4">
+            <h2 class="lh-1 fs-4">Promotion history</h2>
+            <p>Timeline of belt progression</p>
+            <hr class="mb-4">
+
+            <div class="timeline belt-timeline">               
+                <div class="timeline-item belt-achieved">
+                    <p class="fw-bold fs-6 mt-3 mb-0">White</p>
+                    <p class="mb-0">Achieved {{ \Carbon\Carbon::parse($member->memberSince)->format('jS F Y') }}</p>
+                </div>
+
+                <div class="timeline-item">
+                    <p class="fw-bold fs-6 mt-3 mb-0">Blue</p>
+                </div>
+
+                <div class="timeline-item">
+                    <p class="fw-bold fs-6 mt-3 mb-0">Purple</p>
+                </div>
+
+                <div class="timeline-item">
+                    <p class="fw-bold fs-6 mt-3 mb-0">Brown</p>
+                </div>
+
+                <div class="timeline-item">
+                    <p class="fw-bold fs-6 mt-3 mb-0">Black</p>
                 </div>
             </div>
         </div>

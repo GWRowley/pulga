@@ -89,3 +89,61 @@ label.form-check-label {
 .member-profile-name p {
     margin-bottom: 0px;
 }
+
+/* Timeline */
+
+.timeline {
+	width: 100%
+}
+
+.timeline.belt-timeline .timeline-item {
+	position: relative;
+	width: 100%;
+	padding-bottom: 1.5rem;
+	padding-left: 1.5rem;
+	text-align: left;
+    color: #999;
+}
+
+.timeline.belt-timeline .timeline-item:last-of-type {
+	padding-bottom: 0;
+}
+
+.timeline.belt-timeline .timeline-item:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 16px;
+	height: 16px;
+	margin-top: .425rem;
+	margin-left: -.5rem;
+	border: .0625rem solid #dce6f3;
+	border-radius: 50%;
+}
+
+.timeline.belt-timeline .timeline-item.belt-achieved {
+    color: #212529;
+}
+
+.timeline.belt-timeline .timeline-item.belt-achieved:before {
+    border: .0625rem solid green;
+    background-color: green;
+}
+
+.timeline.belt-timeline .timeline-item:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: -.1875rem;
+	width: .0625rem;
+	margin-top: 1.875rem;
+	margin-left: -.0625rem;
+	background-color: #dce6f3;
+}
+
+.timeline.belt-timeline .timeline-item:last-of-type:after {
+	content: none;
+	background-color: transparent;
+}
