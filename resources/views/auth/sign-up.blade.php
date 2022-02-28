@@ -43,6 +43,8 @@
                     <div class="mb-4">
                         <label for="password" class="form-label">Password</label>
                         <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" value="">
+
+                        <div id="password-help" class="form-text">Your password must be at least 8 characters long, and contain at least one upper case letter, a number, and a symbol.</div>
                         
                         @error('password')
                             <p class="mt-1 invalid-feedback fw-bold">{{ $message }}</p>
@@ -53,8 +55,6 @@
                         <label for="password_confirmation" class="form-label">Confirm your password</label>
                         <input type="password" name="password_confirmation" id="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror" value="">
 
-                        <div id="password-help" class="form-text">Your password must be at least 8 characters long, and contain at least one upper case letter, a number, and a symbol.</div>
-                        
                         @error('password_confirmation')
                             <p class="mt-1 invalid-feedback fw-bold">{{ $message }}</p>
                         @enderror

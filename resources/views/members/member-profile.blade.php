@@ -13,7 +13,7 @@
             </ol>
         </nav>
 
-        <div class="member-profile-header my-4 clearfix">     
+        <div class="member-profile-header my-4 clearfix w-100">     
             <div class="member-profile-image">
                 <img src="https://via.placeholder.com/90" class="rounded-circle img-thumbnail d-inline-block" alt="{{ $member->name }} {{ $member->surname }}">
             </div>   
@@ -25,7 +25,10 @@
                     Member since {{ \Carbon\Carbon::parse($member->memberSince)->format('jS F Y') }}
                 </p>
             </div>
+            
+            <a href="{{ route('members') }}/edit-member/{{ $member->id }}" class="btn btn-dark ms-auto">Edit member</a>
         </div>
+      
     </div>
 </div>
 
@@ -98,11 +101,14 @@
             <div class="timeline belt-timeline">               
                 <div class="timeline-item belt-achieved">
                     <p class="fw-bold fs-6 mt-3 mb-0">White</p>
-                    <p class="mb-0">Achieved {{ \Carbon\Carbon::parse($member->memberSince)->format('jS F Y') }}</p>
+                    <p class="mb-0">Achieved {{ \Carbon\Carbon::parse($member->memberSince)->format('F Y') }}</p>
                 </div>
 
-                <div class="timeline-item">
+                <div class="timeline-item @if($member->belt === 'Blue') belt-achieved @endif">
                     <p class="fw-bold fs-6 mt-3 mb-0">Blue</p>
+                    @if($member->belt === 'Blue')
+                    <p class="mb-0">Achieved {{ \Carbon\Carbon::parse($member->memberSince)->format('F Y') }}</p>
+                    @endif
                 </div>
 
                 <div class="timeline-item">

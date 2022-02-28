@@ -29,5 +29,8 @@ Route::get('/dashboard', [DashboardController:: class, 'index'])->name('dashboar
 // Members
 Route::get('/members', [MemberController:: class, 'index'])->name('members');
 Route::get('/members/profile/{id}', [MemberController::class, 'show']);
+
 Route::get('/members/add-new-member', [MemberController:: class, 'add'])->name('add-new-member');
 Route::post('/members/add-new-member', [MemberController::class, 'store']);
+
+Route::get('/members/edit-member/{id}', [MemberController:: class, 'edit'])->name('edit-member');

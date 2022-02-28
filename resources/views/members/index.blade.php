@@ -11,9 +11,10 @@
                 <li class="breadcrumb-item" aria-current="page">Members</li>
             </ol>
         </nav>
-
-        <h1 class="mb-4">Members</h1>
-        <a href="{{ route('add-new-member') }}" class="btn btn-dark mb-4">Add new member</a>
+        <div class="clearfix mb-4">
+            <h1 class="mb-0 lh-1 float-start">Members</h1>
+            <a href="{{ route('add-new-member') }}" class="btn btn-dark float-end">Add new member</a>
+        </div>
     </div>
 </div>
 
@@ -26,7 +27,7 @@
                     <th scope="col">Last name</th>
                     <th scope="col">Belt</th>
                     <th scope="col">Membership</th>
-                    <th scope="col">Actions</th>
+                    <th scope="col"><span class="visually-hidden">Actions<span></th>
                 </tr>
             </thead>
             <tbody>

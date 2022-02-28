@@ -46,7 +46,6 @@ class MemberController extends Controller
     }
 
     // Storing a new member
-
     public function store(Request $request)
     {   
         // Validation for sign up form
@@ -77,8 +76,16 @@ class MemberController extends Controller
             'medicalInformation' => $request->medicalInformation
         ]);
 
-        // Sign in and redirect the user
-       
+        // Redirect to all members and show success message     
         return redirect()->route('members')->with('success', 'New member successfully added.');
+    }
+
+    // Edit member view
+    public function edit($id) {
+        $member = Member::findOrFail($id);
+        
+        return view('members.edit-member')->with([
+            'member' => $member
+        ]);
     }
 }
