@@ -48,7 +48,7 @@ class MemberController extends Controller
     // Storing a new member
     public function store(Request $request)
     {   
-        // Validation for sign up form
+        // Validation for new member
         $this->validate($request, [
             'name' => 'required|max:255',
             'surname' => 'required|max:255',
@@ -62,7 +62,7 @@ class MemberController extends Controller
             'medicalInformation' => 'max:255'
         ]);
 
-        // Store user in the database
+        // Store member in the database
         Member::create([
             'name' => $request->name,
             'surname' => $request->surname,
@@ -77,7 +77,7 @@ class MemberController extends Controller
         ]);
 
         // Redirect to all members and show success message     
-        return redirect()->route('members')->with('success', 'New member successfully added.');
+        return redirect()->route('members')->with('success', 'Member added');
     }
 
     // Edit member view
