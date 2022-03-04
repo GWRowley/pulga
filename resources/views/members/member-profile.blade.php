@@ -25,12 +25,17 @@
                     Member since {{ \Carbon\Carbon::parse($member->memberSince)->format('jS F Y') }}
                 </p>
             </div>
-            
-            <a href="{{ route('members') }}/edit-member/{{ $member->id }}" class="btn btn-dark ms-auto">Edit member</a>
-            <a href="{{ route('members') }}/delete-member/{{ $member->id }}" class="btn btn-dark ms-auto">Delete member</a>
-        </div>
 
-      
+            <div class="ms-auto">
+            <div class="dropdown">
+            <button class="btn btn-dark dropdown-toggle" type="button" id="member-profile-actions" data-bs-toggle="dropdown" aria-expanded="false">
+                Edit
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="member-profile-actions">
+                <li><a class="dropdown-item" href="{{ route('members') }}/edit-member/{{ $member->id }}">Edit member</a></li>  
+                <li><span class="dropdown-item m-0" data-bs-toggle="modal" data-bs-target="#delete-modal" role="button">Delete member</span></li>     
+            </ul>
+        </div>      
     </div>
 </div>
 
@@ -128,4 +133,21 @@
         </div>
     </div>
 </div>
+
+<!-- Delete member modal -->
+<div class="modal fade" id="delete-modal" tabindex="-1" aria-labelledby="delete-modal-title" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body p-4">
+        <h3 class="fs-4 mb-4" id="delete-modal-title">Delete member</h3>
+        <p>Are you sure you want to delete this member? All of the data associated with this member will be permanently removed. This action cannot be undone.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light me-3" data-bs-dismiss="modal">Cancel</button>
+        <a href="{{ route('members') }}/delete-member/{{ $member->id }}" class="btn btn-danger">Delete</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 @endsection

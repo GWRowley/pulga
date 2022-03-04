@@ -28,7 +28,7 @@ class SignInController extends Controller
 
         // Sign in and redirect the user
         if (!auth()->attempt($request->only('email', 'password'), $request->remember)) {
-            return back()->with('status', 'The login details you entered were incorrect.');
+            return back()->with('status', 'The login details you entered were incorrect');
         }
         
         return redirect()->route('dashboard');
