@@ -13,8 +13,11 @@
                 <li class="breadcrumb-item" aria-current="page">Edit</li>
             </ol>
         </nav>
-
-        <h1 class="mb-4 fs-3">Edit member</h1>
+        
+        <div class="mb-4 d-flex align-items-center">
+            <h1 class="fs-2 mb-0 lh-1">Edit member</h1>
+            <a href="{{ route('members') }}/profile/{{ $member->id}}" class="btn btn-dark ms-auto" role="button">Cancel</a>
+        </div>
     </div>
 </div>
 
@@ -186,7 +189,7 @@
         </div>
 
         <div class="col-12 offset-lg-4 col-lg-8">
-            <button type="submit" class="btn btn-dark">Update member</button>
+            <button type="submit" class="btn btn-dark">Save changes</button>
         </div>
     </div>
 </form>

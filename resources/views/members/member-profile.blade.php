@@ -27,15 +27,17 @@
             </div>
 
             <div class="ms-auto">
-            <div class="dropdown">
-            <button class="btn btn-dark dropdown-toggle" type="button" id="member-profile-actions" data-bs-toggle="dropdown" aria-expanded="false">
-                Edit
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="member-profile-actions">
-                <li><a class="dropdown-item" href="{{ route('members') }}/edit-member/{{ $member->id }}">Edit member</a></li>  
-                <li><span class="dropdown-item m-0" data-bs-toggle="modal" data-bs-target="#delete-modal" role="button">Delete member</span></li>     
-            </ul>
-        </div>      
+                <div class="dropdown">
+                    <button class="btn btn-dark dropdown-toggle" type="button" id="member-profile-actions" data-bs-toggle="dropdown" aria-expanded="false">
+                        Edit
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="member-profile-actions">
+                        <li><a class="dropdown-item" href="{{ route('members') }}/edit-member/{{ $member->id }}">Edit member</a></li>  
+                        <li><span class="dropdown-item m-0" data-bs-toggle="modal" data-bs-target="#delete-modal" role="button">Delete member</span></li>     
+                    </ul>
+                </div>
+            </div>      
+        </div>
     </div>
 </div>
 
@@ -112,22 +114,22 @@
                 </div>
 
                 <div class="timeline-item @if($member->belt === 'Blue') belt-achieved @endif">
-                    <p class="fw-bold fs-6 mt-3 mb-0">Blue</p>
+                    <p class="@if($member->belt === 'Blue')fw-bold @endif fs-6 mt-3 mb-0">Blue</p>
                     @if($member->belt === 'Blue')
                     <p class="mb-0">Achieved {{ \Carbon\Carbon::parse($member->memberSince)->format('F Y') }}</p>
                     @endif
                 </div>
 
                 <div class="timeline-item">
-                    <p class="fw-bold fs-6 mt-3 mb-0">Purple</p>
+                     <p class="@if($member->belt === 'Purple')fw-bold @endif fs-6 mt-3 mb-0">Purple</p>
                 </div>
 
                 <div class="timeline-item">
-                    <p class="fw-bold fs-6 mt-3 mb-0">Brown</p>
+                     <p class="@if($member->belt === 'Brown')fw-bold @endif fs-6 mt-3 mb-0">Brown</p>
                 </div>
 
                 <div class="timeline-item">
-                    <p class="fw-bold fs-6 mt-3 mb-0">Black</p>
+                     <p class="@if($member->belt === 'Black')fw-bold @endif fs-6 mt-3 mb-0">Black</p>
                 </div>
             </div>
         </div>

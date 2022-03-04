@@ -13,7 +13,7 @@
         </nav>
         <div class="clearfix mb-4">
             <h1 class="mb-0 lh-1 float-start">Members</h1>
-            <a href="{{ route('add-new-member') }}" class="btn btn-dark float-end">Add new member</a>
+            <a href="{{ route('add-new-member') }}" class="btn btn-dark float-end" role="button">Add new member</a>
         </div>
     </div>
 </div>
@@ -37,7 +37,7 @@
                     <td class="align-middle">{{ $member->surname }}</td>
                     <td class="align-middle">{{ $member->belt }}</td>
                     <td class="align-middle">{{ $member->membership }}</td>
-                    <td class="align-middle"><a href="{{ route('members') }}/profile/{{ $member->id}}" class="btn btn-dark">View</a></td>
+                    <td class="align-middle"><a href="{{ route('members') }}/profile/{{ $member->id}}" class="btn btn-dark" role="button">View</a></td>
                 </tr>
                 @endforeach
             </tbody>

@@ -56,7 +56,7 @@
                             <a href="{{ route('sign-in') }}" class="nav-link me-3">Sign in</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('sign-up') }}" class="btn btn-outline-light">Sign up</a>
+                            <a href="{{ route('sign-up') }}" class="btn btn-outline-light" role="button">Sign up</a>
                         </li>
                     </ul>
                 </div>

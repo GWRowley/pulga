@@ -13,7 +13,7 @@
             </ol>
         </nav>
 
-        <h1 class="mb-4 fs-3">Add new member</h1>
+        <h1 class="mb-4 fs-2">Add new member</h1>
     </div>
 </div>
 

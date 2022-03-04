@@ -14,7 +14,7 @@
                 Members
             </h2>
 
-            <a href="{{ route('members') }}" class="btn btn-dark">View members</a>
+            <a href="{{ route('members') }}" class="btn btn-dark" role="button">View members</a>
         </div>
     </div>
 
@@ -24,7 +24,7 @@
                 Classes
             </h2>
 
-            <a href="#" class="btn btn-dark">View classes</a>
+            <a href="#" class="btn btn-dark" role="button">View classes</a>
         </div>
     </div>
 
@@ -34,7 +34,7 @@
                 Reports
             </h2>
 
-            <a href="#" class="btn btn-dark">View reports</a>
+            <a href="#" class="btn btn-dark" role="button">View reports</a>
         </div>
     </div>
 </div>
