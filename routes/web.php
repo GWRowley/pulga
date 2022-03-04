@@ -34,3 +34,4 @@ Route::get('/members/add-new-member', [MemberController:: class, 'add'])->name('
 Route::post('/members/add-new-member', [MemberController::class, 'store']);
 
 Route::get('/members/edit-member/{id}', [MemberController:: class, 'edit'])->name('edit-member');
+Route::put('/members/update-member/{id}', [MemberController:: class, 'update'])->name('update-member');

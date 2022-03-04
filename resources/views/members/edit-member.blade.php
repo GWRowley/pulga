@@ -20,8 +20,12 @@
 
 <hr>
     
-<form action="" method="post" autocomplete="off">
+<form action="/members/update-member/{{ $member->id }}" method="post" autocomplete="off">
     @csrf
+    @method('PUT')
+
+    <input type="hidden" id="id" name="id" value="{{ $member->id }}">
+   
     <div class="row">
         <div class="col-12 col-lg-4">
             <h2 class="fs-5">Personal information</h2>

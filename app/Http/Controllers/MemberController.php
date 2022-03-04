@@ -88,4 +88,40 @@ class MemberController extends Controller
             'member' => $member
         ]);
     }
+
+    // Update member
+    public function update(Request $request, $id) {
+
+        // Validation for new member
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'surname' => 'required|max:255',
+            'dob' => 'required|before_or_equal:today',
+            'gender' => 'required|max:6',
+            'belt' => 'required|max:6',
+            'membership' => 'required|max:255',
+            'memberSince' => 'required|before_or_equal:today',
+            'emergencyContact' => 'required|max:255',
+            'emergencyNumber' => 'required|max:20',
+            'medicalInformation' => 'max:255'
+        ]);
+
+        $member = Member::findOrFail($id);
+
+        $member->name = $request->input('name');
+        $member->surname = $request->input('surname');
+        $member->dob = $request->input('dob');
+        $member->gender = $request->input('gender');
+        $member->belt = $request->input('belt');
+        $member->membership = $request->input('membership');
+        $member->memberSince = $request->input('memberSince');
+        $member->emergencyContact = $request->input('emergencyContact');
+        $member->emergencyNumber = $request->input('emergencyNumber');
+        $member->medicalInformation = $request->input('medicalInformation');
+
+        $member->update();
+
+        // Redirect and show success message     
+        return redirect('/members/profile/' . $id)->with('success', 'Member updated');
+    }
 }
