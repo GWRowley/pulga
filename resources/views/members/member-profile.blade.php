@@ -27,7 +27,9 @@
             </div>
             
             <a href="{{ route('members') }}/edit-member/{{ $member->id }}" class="btn btn-dark ms-auto">Edit member</a>
+            <a href="{{ route('members') }}/delete-member/{{ $member->id }}" class="btn btn-dark ms-auto">Delete member</a>
         </div>
+
       
     </div>
 </div>

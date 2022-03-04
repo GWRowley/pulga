@@ -89,10 +89,10 @@ class MemberController extends Controller
         ]);
     }
 
-    // Update member
+    // Edit and update member
     public function update(Request $request, $id) {
 
-        // Validation for new member
+        // Validation for updating member
         $this->validate($request, [
             'name' => 'required|max:255',
             'surname' => 'required|max:255',
@@ -106,22 +106,32 @@ class MemberController extends Controller
             'medicalInformation' => 'max:255'
         ]);
 
+        // Updating the member record
         $member = Member::findOrFail($id);
 
-        $member->name = $request->input('name');
-        $member->surname = $request->input('surname');
-        $member->dob = $request->input('dob');
-        $member->gender = $request->input('gender');
-        $member->belt = $request->input('belt');
-        $member->membership = $request->input('membership');
-        $member->memberSince = $request->input('memberSince');
-        $member->emergencyContact = $request->input('emergencyContact');
-        $member->emergencyNumber = $request->input('emergencyNumber');
-        $member->medicalInformation = $request->input('medicalInformation');
+        $member->name = $request->name;
+        $member->surname = $request->surname;
+        $member->dob = $request->dob;
+        $member->gender = $request->gender;
+        $member->belt = $request->belt;
+        $member->membership = $request->membership;
+        $member->memberSince = $request->memberSince;
+        $member->emergencyContact = $request->emergencyContact;
+        $member->emergencyNumber = $request->emergencyNumber;
+        $member->medicalInformation = $request->medicalInformation;
 
         $member->update();
 
         // Redirect and show success message     
         return redirect('/members/profile/' . $id)->with('success', 'Member updated');
+    }
+
+    // Delete member
+    public function delete($id) {
+        $member = Member::findOrFail($id);
+        $member->delete();        
+
+        // Redirect to all members and show success message     
+        return redirect()->route('members')->with('success', 'Member deleted');
     }
 }
