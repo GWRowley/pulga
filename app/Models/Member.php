@@ -15,10 +15,10 @@ class Member extends Model
         'gender',
         'belt',
         'membership',
-        'memberSince',
-        'emergencyContact',
-        'emergencyNumber',
-        'medicalInformation'
+        'member_since',
+        'emergency_contact',
+        'emergency_number',
+        'medical_information'
     ];
 }
 // Format date of birth for storing in DB
@@ -30,7 +30,7 @@ function setDobAttribute($value)
 // Format member since for storing in DB
 function setMemberSinceAttribute($value)
 {
-    $this->attributes['memberSince'] = Card::createFromFormat('d/m/Y', $value)->format('Y-m-d');
+    $this->attributes['member_since'] = Card::createFromFormat('d/m/Y', $value)->format('Y-m-d');
 }
 
 // Convert date of birth to age

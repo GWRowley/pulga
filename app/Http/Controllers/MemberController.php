@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Member;
+use App\Models\User;
 
 class MemberController extends Controller
 {
@@ -56,10 +57,10 @@ class MemberController extends Controller
             'gender' => 'required|max:6',
             'belt' => 'required|max:6',
             'membership' => 'required|max:255',
-            'memberSince' => 'required|before_or_equal:today',
-            'emergencyContact' => 'required|max:255',
-            'emergencyNumber' => 'required|max:20',
-            'medicalInformation' => 'max:255'
+            'member_since' => 'required|before_or_equal:today',
+            'emergency_contact' => 'required|max:255',
+            'emergency_number' => 'required|max:20',
+            'medical_information' => 'max:255'            
         ]);
 
         // Store member in the database
@@ -70,10 +71,10 @@ class MemberController extends Controller
             'gender' => $request->gender,
             'belt' => $request->belt,
             'membership' => $request->membership,
-            'memberSince' => $request->memberSince,
-            'emergencyContact' => $request->emergencyContact,
-            'emergencyNumber' => $request->emergencyNumber,
-            'medicalInformation' => $request->medicalInformation
+            'member_since' => $request->member_since,
+            'emergency_contact' => $request->emergency_contact,
+            'emergency_number' => $request->emergency_number,
+            'medical_information' => $request->medical_information            
         ]);
 
         // Redirect to all members and show success message     
