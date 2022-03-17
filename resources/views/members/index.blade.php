@@ -20,6 +20,9 @@
 
 <div class="row">
     <div class="col-12">
+       @if (count($members) === 0)
+        <p>No members found.</p>
+        @else
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -42,6 +45,7 @@
                 @endforeach
             </tbody>
         </table>
+        @endif
     </div>
 </div>
 @endsection
