@@ -35,17 +35,22 @@
                 
                 @auth
                 <div class="d-flex">
-                    <ul class="navbar-nav">
-                        <li class="nav-link me-3">
-                            {{ auth()->user()->name }}
-                        </li>
+            
+                <div class="dropdown">
+                    <button class="btn btn-dark dropdown-toggle" type="button" id="user-actions" data-bs-toggle="dropdown" aria-expanded="false">
+                         {{ auth()->user()->name }}
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="user-actions">
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
                         <li>
                             <form action="{{ route('sign-out') }}" method="post">
                                 @csrf
-                                <button type="submit" class="btn btn-outline-light">Sign out</button>
+                                <button type="submit" class="btn btn-link dropdown-item rounded-0">Sign out</button>
                             </form>
-                        </li>
+                        </li>     
                     </ul>
+                </div>
+        
                 </div>
                 @endauth
 
