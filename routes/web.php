@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\SignOutController;
 use App\Http\Controllers\Auth\SignUpController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\TimetableController;
 
 // Home
 Route::get('/', function () {
@@ -36,3 +37,10 @@ Route::post('/members/add-new-member', [MemberController::class, 'store']);
 Route::get('/members/edit-member/{id}', [MemberController:: class, 'edit'])->name('edit-member');
 Route::put('/members/update-member/{id}', [MemberController:: class, 'update'])->name('update-member');
 Route::get('/members/delete-member/{id}', [MemberController:: class, 'delete'])->name('delete-member');
+
+// Timetable
+Route::get('/timetable', [TimetableController:: class, 'index'])->name('timetable');
+
+// Competitions - needs controller and adding at top to use
+
+// Reports - needs controller and adding at top to use
