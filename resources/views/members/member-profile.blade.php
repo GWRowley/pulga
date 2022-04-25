@@ -22,7 +22,7 @@
                     {{ $member->name }} {{ $member->surname }}
                 </h1>
                 <p>
-                    Member since {{ \Carbon\Carbon::parse($member->memberSince)->format('jS F Y') }}
+                    Member since {{ \Carbon\Carbon::parse($member->member_since)->format('jS F Y') }}
                 </p>
             </div>
 
@@ -79,19 +79,19 @@
             <div class="row">      
                 <div class="col-12 col-lg-6">
                     <p class="fw-bold mb-0">Emergency contact</p>
-                    <p>{{ $member->emergencyContact }}</p>
+                    <p>{{ $member->emergency_contact }}</p>
                 </div>
 
                 <div class="col-12 col-lg-6">
                     <p class="fw-bold mb-0">Emergency contact number</p>
-                    <p>{{ $member->emergencyNumber }}</p>
+                    <p>{{ $member->emergency_number }}</p>
                 </div>
                 
                 <div class="col-12">
                     <p class="fw-bold mb-0">Medical conditions</p>
                     <p class="mb-0">
-                        @if ($member->medicalInformation)
-                        {{ $member->medicalInformation }}
+                        @if ($member->medical_information)
+                        {{ $member->medical_information }}
                         @else 
                         N/A
                         @endif
@@ -110,13 +110,13 @@
             <div class="timeline belt-timeline">               
                 <div class="timeline-item belt-achieved">
                     <p class="fw-bold fs-6 mt-3 mb-0">White</p>
-                    <p class="mb-0">Achieved {{ \Carbon\Carbon::parse($member->memberSince)->format('F Y') }}</p>
+                    <p class="mb-0">Achieved {{ \Carbon\Carbon::parse($member->member_since)->format('F Y') }}</p>
                 </div>
 
                 <div class="timeline-item @if($member->belt === 'Blue') belt-achieved @endif">
                     <p class="@if($member->belt === 'Blue')fw-bold @endif fs-6 mt-3 mb-0">Blue</p>
                     @if($member->belt === 'Blue')
-                    <p class="mb-0">Achieved {{ \Carbon\Carbon::parse($member->memberSince)->format('F Y') }}</p>
+                    <p class="mb-0">Achieved {{ \Carbon\Carbon::parse($member->member_since)->format('F Y') }}</p>
                     @endif
                 </div>
 

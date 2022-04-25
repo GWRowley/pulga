@@ -147,9 +147,9 @@
 
             <div class="mb-4">
                 <label for="memberSince" class="form-label">Member since</label>
-                <input type="date" name="memberSince" id="memberSince" class="form-control @error('memberSince') is-invalid @enderror" value="{{ $member->memberSince }}">
+                <input type="date" name="member_since" id="memberSince" class="form-control @error('member_since') is-invalid @enderror" value="{{ $member->member_since }}">
 
-                @error('memberSince')
+                @error('member_since')
                     <p class="mt-1 invalid-feedback fw-bold">{{ $message }}</p>
                 @enderror
             </div>
@@ -165,25 +165,25 @@
         <div class="col-12 col-lg-8">
             <div class="mb-4">
                 <label for="emergencyContact" class="form-label">Emergency contact name</label>
-                <input type="text" name="emergencyContact" id="emergencyContact" class="form-control @error('emergencyContact') is-invalid @enderror" value="{{ $member->emergencyContact }}">
+                <input type="text" name="emergency_contact" id="emergencyContact" class="form-control @error('emergency_contact') is-invalid @enderror" value="{{ $member->emergency_contact }}">
 
-                @error('emergencyContact')
+                @error('emergency_contact')
                     <p class="mt-1 invalid-feedback fw-bold">{{ $message }}</p>
                 @enderror
             </div>
 
             <div class="mb-4">
                 <label for="emergencyNumber" class="form-label">Emergency contact number</label>
-                <input type="tel" name="emergencyNumber" id="emergencyNumber" class="form-control @error('emergencyNumber') is-invalid @enderror" value="{{ $member->emergencyNumber }}">
+                <input type="tel" name="emergency_number" id="emergencyNumber" class="form-control @error('emergency_number') is-invalid @enderror" value="{{ $member->emergency_number }}">
 
-                @error('emergencyNumber')
+                @error('emergency_number')
                     <p class="mt-1 invalid-feedback fw-bold">{{ $message }}</p>
                 @enderror
             </div>
 
             <div class="mb-4">
                 <label for="medicalInformation" class="form-label">Medical conditions</label>
-                <textarea rows="3" name="medicalInformation" id="medicalInformation" class="form-control">{{ $member->medicalInformation }}</textarea>
+                <textarea rows="3" name="medical_information" id="medicalInformation" class="form-control">{{ $member->medical_information }}</textarea>
                 <div id="medical-info-help" class="form-text">This field is optional, only add details if necessary.</div>
             </div>
         </div>
