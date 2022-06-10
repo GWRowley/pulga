@@ -24,7 +24,6 @@
             <table class="table table-striped mb-4">
                 <thead>
                     <tr>
-                        <th scope="col">User</th>
                         <th scope="col">First name</th>
                         <th scope="col">Last name</th>
                         <th scope="col">Belt</th>
@@ -34,14 +33,15 @@
                 </thead>
                 <tbody>
                     @foreach ($members as $member)
+                    @if ($member->ownedBy(auth()->user()))
                     <tr>
-                        <td class="align-middle">{{ $member->user->name }}</td>
                         <td class="align-middle">{{ $member->name }}</td>
                         <td class="align-middle">{{ $member->surname }}</td>
                         <td class="align-middle">{{ $member->belt }}</td>
                         <td class="align-middle">{{ $member->membership }}</td>
                         <td class="align-middle"><a href="{{ route('members') }}/profile/{{ $member->id}}" class="btn btn-dark" role="button">View</a></td>
                     </tr>
+                    @endif
                     @endforeach                        
                 </tbody>
             </table>

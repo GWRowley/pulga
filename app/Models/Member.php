@@ -21,6 +21,11 @@ class Member extends Model
         'medical_information'
     ];
 
+    public function ownedBy(User $user)
+    {
+        return $user->id === $this->user_id;
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
