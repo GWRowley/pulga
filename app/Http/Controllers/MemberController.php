@@ -137,9 +137,16 @@ class MemberController extends Controller
     // Delete member
     public function delete($id) {
         $member = Member::findOrFail($id);
-        $member->delete();        
 
-        // Redirect to all members and show success message     
-        return redirect()->route('members')->with('success', 'Member deleted');
+        // Delete member if they are one of your members, else redirect
+        if ($member->ownedBy(auth()->user())) {
+            $member->delete();     
+
+            // Redirect to all members and show success message     
+            return redirect()->route('members')->with('success', 'Member deleted');
+        } else {
+            return redirect()->route('members')->with('danger', 'You are not authorised to delete this member');
+        }
+        
     }
 }
