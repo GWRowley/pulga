@@ -14,7 +14,7 @@ class CreateMembersTable extends Migration
     {
         Schema::create('members', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable();
+            $table->foreignId('user_id')->onDelete('cascade');
             $table->string('name');
             $table->string('surname');
             $table->date('dob');
@@ -24,7 +24,7 @@ class CreateMembersTable extends Migration
             $table->date('member_since');
             $table->string('emergency_contact');
             $table->string('emergency_number');
-            $table->string('medical_information')->nullable();
+            $table->text('medical_information')->nullable();
             $table->timestamps();
         });
     }

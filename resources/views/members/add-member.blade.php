@@ -25,12 +25,9 @@
         <div class="col-12 col-lg-4">
             <h2 class="fs-5">Personal information</h2>
             <p>This is basic information about the member.</p>
-        </div>
-        
+        </div>        
 
         <div class="col-12 col-lg-8">
-            <input type="hidden" name="user_id" id="userId" class="form-control" value="{{ auth()->user()->id }}">
-
             <div class="mb-4">
                 <label for="name" class="form-label" autocomplete="off">First name</label>
                 <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">

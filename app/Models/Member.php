@@ -10,7 +10,6 @@ class Member extends Model
     protected $table = 'members';
     protected $fillable = [
         'name',
-        'user_id',
         'surname',
         'dob',
         'gender',
@@ -22,9 +21,8 @@ class Member extends Model
         'medical_information'
     ];
 
-    // https://laracasts.com/series/laravel-8-from-scratch/episodes/24
-    // No idea if I need these 2 lines...
-    public function userId() {
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 }

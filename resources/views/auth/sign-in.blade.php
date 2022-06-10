@@ -41,7 +41,7 @@
                 
                 <div class="d-block clearfix mb-3">
                     <div class="form-check mb-3 float-start">
-                        <input class="form-check-input" type="checkbox" value="" id="remember">
+                        <input type="checkbox" name="remember" id="remember" class="form-check-input">
                         <label class="form-check-label" for="remember">
                             Remember me
                         </label>

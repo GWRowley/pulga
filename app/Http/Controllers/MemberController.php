@@ -18,14 +18,9 @@ class MemberController extends Controller
 
     // All members view
     public function index() {
-        $members = Member::select('id', 'name', 'surname')->get();
-        // Show members in alphabetical order
-        $members = DB::table('members')
-                ->orderBy('name', 'asc')
-                ->orderBy('surname', 'asc')
-                ->get();
+        $members = Member::paginate(5);
         
-        return view('members.index')->with([
+        return view('members.index', [
             'members' => $members
         ]);
     }
@@ -37,7 +32,7 @@ class MemberController extends Controller
 
         return view('members.member-profile')->with([
             'member' => $member,
-            'age' => $age
+            'age' => $age        
         ]);
     }
 
@@ -51,7 +46,6 @@ class MemberController extends Controller
     {   
         // Validation for new member
         $this->validate($request, [
-            'user_id' => 'required',
             'name' => 'required|max:255',
             'surname' => 'required|max:255',
             'dob' => 'required|before_or_equal:today',
@@ -65,8 +59,7 @@ class MemberController extends Controller
         ]);
 
         // Store member in the database
-        Member::create([
-            'user_id' => $request->user_id,
+        $request->user()->members()->create([
             'name' => $request->name,
             'surname' => $request->surname,
             'dob' => $request->dob,
@@ -76,7 +69,7 @@ class MemberController extends Controller
             'member_since' => $request->member_since,
             'emergency_contact' => $request->emergency_contact,
             'emergency_number' => $request->emergency_number,
-            'medical_information' => $request->medical_information            
+            'medical_information' => $request->medical_information    
         ]);
 
         // Redirect to all members and show success message     

@@ -20,12 +20,11 @@
 
 <div class="row">
     <div class="col-12">        
-        @if (count($members->where('user_id', auth()->user()->id)) === 0)
-            <p>No members found.</p>
-        @else
-            <table class="table table-striped">
+        @if ($members->count())
+            <table class="table table-striped mb-4">
                 <thead>
                     <tr>
+                        <th scope="col">User</th>
                         <th scope="col">First name</th>
                         <th scope="col">Last name</th>
                         <th scope="col">Belt</th>
@@ -34,8 +33,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                        @foreach ($members->where('user_id', auth()->user()->id) as $member)
+                    @foreach ($members as $member)
                     <tr>
+                        <td class="align-middle">{{ $member->user->name }}</td>
                         <td class="align-middle">{{ $member->name }}</td>
                         <td class="align-middle">{{ $member->surname }}</td>
                         <td class="align-middle">{{ $member->belt }}</td>
@@ -45,7 +45,13 @@
                     @endforeach                        
                 </tbody>
             </table>
+        @else
+            <p>No members found.</p>
         @endif
+
+        <div class="d-flex justify-content-center">
+            {{ $members->links() }}
+        </div>
     </div>
 </div>
 @endsection
