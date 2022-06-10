@@ -18,7 +18,7 @@ class MemberController extends Controller
 
     // All members view
     public function index() {
-        $members = Member::orderBy('name')->orderBy('surname')->paginate(3);
+        $members = Member::orderBy('name')->orderBy('surname')->paginate(10);
         
         return view('members.index', [
             'members' => $members
@@ -29,11 +29,17 @@ class MemberController extends Controller
     public function show($id) {
         $member = Member::findOrFail($id);
         $age = Carbon::parse($member->dob)->diff(Carbon::now())->y;
-
-        return view('members.member-profile')->with([
-            'member' => $member,
-            'age' => $age        
-        ]);
+        
+        // Show member profile if they are one of your members, else redirect
+        if ($member->ownedBy(auth()->user())) {
+            return view('members.member-profile')->with([
+                'member' => $member,
+                'age' => $age        
+            ]);
+        } else {
+            return redirect()->route('members')->with('danger', 'You are not authorised to view this member');
+        }
+        
     }
 
     // Add members view
@@ -79,10 +85,16 @@ class MemberController extends Controller
     // Edit member view
     public function edit($id) {
         $member = Member::findOrFail($id);
-        
-        return view('members.edit-member')->with([
-            'member' => $member
-        ]);
+
+        // Edit member profile if they are one of your members, else redirect
+        if ($member->ownedBy(auth()->user())) {
+            return view('members.edit-member')->with([
+                'member' => $member
+            ]);
+        } else {
+            return redirect()->route('members')->with('danger', 'You are not authorised to edit this member');
+        }
+
     }
 
     // Edit and update member
