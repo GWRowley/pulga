@@ -29,6 +29,8 @@
         
 
         <div class="col-12 col-lg-8">
+            <input type="hidden" name="user_id" id="userId" class="form-control" value="{{ auth()->user()->id }}">
+
             <div class="mb-4">
                 <label for="name" class="form-label" autocomplete="off">First name</label>
                 <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
@@ -91,7 +93,6 @@
             <div class="mb-4">
                 <p id="belt-label" class="form-label">Current belt</p>
                 <select name="belt" id="belt" class="form-select  @error('belt') is-invalid @enderror" aria-labelledby="belt-label">
-                    
                     <option value="White" selected>White</option>
                     <option value="Blue">Blue</option>
                     <option value="Purple">Purple</option>

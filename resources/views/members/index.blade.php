@@ -19,32 +19,32 @@
 </div>
 
 <div class="row">
-    <div class="col-12">
-       @if (count($members) === 0)
-        <p>No members found.</p>
+    <div class="col-12">        
+        @if (count($members->where('user_id', auth()->user()->id)) === 0)
+            <p>No members found.</p>
         @else
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">First name</th>
-                    <th scope="col">Last name</th>
-                    <th scope="col">Belt</th>
-                    <th scope="col">Membership</th>
-                    <th scope="col"><span class="visually-hidden">Actions<span></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($members as $member)
-                <tr>
-                    <td class="align-middle">{{ $member->name }}</td>
-                    <td class="align-middle">{{ $member->surname }}</td>
-                    <td class="align-middle">{{ $member->belt }}</td>
-                    <td class="align-middle">{{ $member->membership }}</td>
-                    <td class="align-middle"><a href="{{ route('members') }}/profile/{{ $member->id}}" class="btn btn-dark" role="button">View</a></td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">First name</th>
+                        <th scope="col">Last name</th>
+                        <th scope="col">Belt</th>
+                        <th scope="col">Membership</th>
+                        <th scope="col"><span class="visually-hidden">Actions<span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                        @foreach ($members->where('user_id', auth()->user()->id) as $member)
+                    <tr>
+                        <td class="align-middle">{{ $member->name }}</td>
+                        <td class="align-middle">{{ $member->surname }}</td>
+                        <td class="align-middle">{{ $member->belt }}</td>
+                        <td class="align-middle">{{ $member->membership }}</td>
+                        <td class="align-middle"><a href="{{ route('members') }}/profile/{{ $member->id}}" class="btn btn-dark" role="button">View</a></td>
+                    </tr>
+                    @endforeach                        
+                </tbody>
+            </table>
         @endif
     </div>
 </div>

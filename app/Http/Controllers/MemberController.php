@@ -51,6 +51,7 @@ class MemberController extends Controller
     {   
         // Validation for new member
         $this->validate($request, [
+            'user_id' => 'required',
             'name' => 'required|max:255',
             'surname' => 'required|max:255',
             'dob' => 'required|before_or_equal:today',
@@ -65,6 +66,7 @@ class MemberController extends Controller
 
         // Store member in the database
         Member::create([
+            'user_id' => $request->user_id,
             'name' => $request->name,
             'surname' => $request->surname,
             'dob' => $request->dob,
