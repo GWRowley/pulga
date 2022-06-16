@@ -109,7 +109,7 @@
 
             <div class="timeline belt-timeline">               
                 <div class="timeline-item belt-achieved">
-                    <p class="fw-bold fs-6 mt-3 mb-0">White</p>
+                    <p class="@if($member->belt === 'White')fw-bold @endif fs-6 mt-3 mb-0">White</p>
                     <p class="mb-0">Achieved {{ \Carbon\Carbon::parse($member->member_since)->format('F Y') }}</p>
                 </div>
 

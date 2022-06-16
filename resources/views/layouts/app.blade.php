@@ -21,18 +21,35 @@
             <a class="navbar-brand" href="/">
                 Kimono
             </a>
-
+          
+            @guest
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavigation" aria-controls="mainNavigation" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
+
             <div class="collapse navbar-collapse" id="mainNavigation">
                 <ul class="navbar-nav me-auto mb-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/">Home</a>
+                        <a class="nav-link" href="/">About</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Pricing</a>
                     </li>
                 </ul>
-                
+       
+                <div class="d-flex">
+                    <ul class="navbar-nav">
+                        <li>
+                            <a href="{{ route('sign-in') }}" class="nav-link me-3">Sign in</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('sign-up') }}" class="btn btn-outline-light" role="button">Sign up</a>
+                        </li>
+                    </ul>
+                </div>
+                @endguest
+
                 @auth
                 <div class="d-flex">
             
@@ -53,19 +70,6 @@
         
                 </div>
                 @endauth
-
-                @guest
-                <div class="d-flex">
-                    <ul class="navbar-nav">
-                        <li>
-                            <a href="{{ route('sign-in') }}" class="nav-link me-3">Sign in</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('sign-up') }}" class="btn btn-outline-light" role="button">Sign up</a>
-                        </li>
-                    </ul>
-                </div>
-                @endguest
 
             </div>
         </div>

@@ -48,7 +48,7 @@
                     </div>
 
                     <div class="float-end">
-                        <a href="#" class="forgot-password link-dark">Forgot your password?</a>
+                        <a href="{{ route('forgot-password') }}" class="forgot-password link-dark">Forgot your password?</a>
                     </div>
          
                 </div>
