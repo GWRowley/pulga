@@ -79,7 +79,7 @@
             </fieldset>
 
             <fieldset class="mb-4">
-                <label for="dob" class="form-label">Profile picture</label>
+                <label for="avatar" class="form-label">Profile picture</label>
                 <input type="file" accept="image/*" name="avatar" id="avatar" class="form-control @error('avatar') is-invalid @enderror" value="{{ old('avatar') }}">
                 <div id="avatar-help" class="form-text">Your file should be a .jpg, .jpeg or .png and less than 5MB in size.</div>
 
