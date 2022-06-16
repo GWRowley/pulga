@@ -13,6 +13,7 @@ class Member extends Model
         'surname',
         'dob',
         'gender',
+        'avatar',
         'belt',
         'membership',
         'member_since',

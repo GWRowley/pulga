@@ -56,6 +56,7 @@ class MemberController extends Controller
             'surname' => 'required|max:255',
             'dob' => 'required|before_or_equal:today',
             'gender' => 'required|max:6',
+            'avatar' => 'mimes:jpg,png,jpeg|max:5048',
             'belt' => 'required|max:6',
             'membership' => 'required|max:255',
             'member_since' => 'required|before_or_equal:today',
@@ -64,12 +65,18 @@ class MemberController extends Controller
             'medical_information' => 'max:255'            
         ]);
 
+        // Create unique name for each member profile picture
+        $newAvatarName = $request->id . '-' . $request->name . '-' . $request->surname . '.' . $request->avatar->extension();
+        // Add image to the public folder
+        $request->avatar->move(public_path('images/member-avatars'), $newAvatarName);
+
         // Store member in the database
         $request->user()->members()->create([
             'name' => ucfirst($request->name),
             'surname' => ucfirst($request->surname),
             'dob' => $request->dob,
             'gender' => $request->gender,
+            'avatar' => $newAvatarName,
             'belt' => $request->belt,
             'membership' => $request->membership,
             'member_since' => $request->member_since,
@@ -106,6 +113,7 @@ class MemberController extends Controller
             'surname' => 'required|max:255',
             'dob' => 'required|before_or_equal:today',
             'gender' => 'required|max:6',
+            'avatar' => 'mimes:jpg,png,jpeg|max:5048',
             'belt' => 'required|max:6',
             'membership' => 'required|max:255',
             'member_since' => 'required|before_or_equal:today',
@@ -114,6 +122,11 @@ class MemberController extends Controller
             'medical_information' => 'max:255'
         ]);
 
+        // Create unique name for each member profile picture
+        $newAvatarName = $request->id . '-' . $request->name . '-' . $request->surname . '.' . $request->avatar->extension();
+        // Add image to the public folder
+        $request->avatar->move(public_path('images/member-avatars'), $newAvatarName);
+
         // Updating the member record
         $member = Member::findOrFail($id);
 
@@ -121,6 +134,7 @@ class MemberController extends Controller
         $member->surname = $request->surname;
         $member->dob = $request->dob;
         $member->gender = $request->gender;
+        $member->avatar  = $newAvatarName;
         $member->belt = $request->belt;
         $member->membership = $request->membership;
         $member->member_since = $request->member_since;

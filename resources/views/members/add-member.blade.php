@@ -19,7 +19,7 @@
 
 <hr>
     
-<form action="{{ route('add-new-member') }}" method="post" autocomplete="off">
+<form action="{{ route('add-new-member') }}" method="post" enctype="multipart/form-data" autocomplete="off">
     @csrf
     <div class="row">
         <div class="col-12 col-lg-4">
@@ -74,6 +74,16 @@
                 </div>
                 
                 @error('gender')
+                    <p class="mt-1 invalid-feedback fw-bold">{{ $message }}</p>
+                @enderror
+            </fieldset>
+
+            <fieldset class="mb-4">
+                <label for="dob" class="form-label">Profile picture</label>
+                <input type="file" accept="image/*" name="avatar" id="avatar" class="form-control @error('avatar') is-invalid @enderror" value="{{ old('avatar') }}">
+                <div id="avatar-help" class="form-text">Your file should be a .jpg, .jpeg or .png and less than 5MB in size.</div>
+
+                @error('avatar')
                     <p class="mt-1 invalid-feedback fw-bold">{{ $message }}</p>
                 @enderror
             </fieldset>

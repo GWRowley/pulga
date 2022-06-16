@@ -15,7 +15,7 @@
 
         <div class="member-profile-header my-4 clearfix w-100">     
             <div class="member-profile-image">
-                <img src="https://via.placeholder.com/90" class="rounded-circle img-thumbnail d-inline-block" alt="{{ $member->name }} {{ $member->surname }}">
+                <img src="{{ $member->avatar ? asset('images/member-avatars/' . $member->avatar) : 'https://via.placeholder.com/90' }}" class="rounded-circle img-thumbnail d-inline-block" alt="{{ $member->name }} {{ $member->surname }}">
             </div>   
             <div class="member-profile-name">
                 <h1>

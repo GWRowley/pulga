@@ -23,7 +23,7 @@
 
 <hr>
     
-<form action="/members/update-member/{{ $member->id }}" method="post" autocomplete="off">
+<form action="/members/update-member/{{ $member->id }}" method="post" enctype="multipart/form-data" autocomplete="off">
     @csrf
     @method('PUT')
 
@@ -82,6 +82,22 @@
                 </div>
                 
                 @error('gender')
+                    <p class="mt-1 invalid-feedback fw-bold">{{ $message }}</p>
+                @enderror
+            </fieldset>
+            
+            @if ($member->avatar )
+            <div class="member-profile-image">
+                <img src="{{ asset('images/member-avatars/' . $member->avatar) }}" class="rounded-circle img-thumbnail d-inline-block" alt="{{ $member->name }} {{ $member->surname }}">
+            </div>
+            @endif
+
+            <fieldset class="mb-4">
+                <label for="dob" class="form-label">Profile picture</label>
+                <input type="file" accept="image/*" name="avatar" id="avatar" class="form-control @error('avatar') is-invalid @enderror">
+                <div id="avatar-help" class="form-text">Your file should be a .jpg, .jpeg or .png and less than 5MB in size.</div>
+
+                @error('avatar')
                     <p class="mt-1 invalid-feedback fw-bold">{{ $message }}</p>
                 @enderror
             </fieldset>

@@ -19,6 +19,7 @@ class CreateMembersTable extends Migration
             $table->string('surname');
             $table->date('dob');
             $table->string('gender');
+            $table->string('avatar')->nullable();
             $table->string('belt');
             $table->string('membership');
             $table->date('member_since');
