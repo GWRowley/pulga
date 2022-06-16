@@ -66,14 +66,14 @@ class MemberController extends Controller
 
         // Store member in the database
         $request->user()->members()->create([
-            'name' => $request->name,
-            'surname' => $request->surname,
+            'name' => ucfirst($request->name),
+            'surname' => ucfirst($request->surname),
             'dob' => $request->dob,
             'gender' => $request->gender,
             'belt' => $request->belt,
             'membership' => $request->membership,
             'member_since' => $request->member_since,
-            'emergency_contact' => $request->emergency_contact,
+            'emergency_contact' => ucwords($request->emergency_contact),
             'emergency_number' => $request->emergency_number,
             'medical_information' => $request->medical_information    
         ]);
