@@ -19,7 +19,7 @@
             </div>   
             <div class="member-profile-name">
                 <h1>
-                    {{ $member->name }} {{ $member->surname }}
+                    {{ ucfirst($member->name) }} {{ ucfirst($member->surname) }}
                 </h1>
                 <p>
                     Member since {{ \Carbon\Carbon::parse($member->member_since)->format('jS F Y') }}
@@ -79,7 +79,7 @@
             <div class="row">      
                 <div class="col-12 col-lg-6">
                     <p class="fw-bold mb-0">Emergency contact</p>
-                    <p>{{ $member->emergency_contact }}</p>
+                    <p>{{ ucwords($member->emergency_contact) }}</p>
                 </div>
 
                 <div class="col-12 col-lg-6">

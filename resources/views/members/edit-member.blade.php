@@ -38,7 +38,7 @@
         <div class="col-12 col-lg-8">
             <div class="mb-4">
                 <label for="name" class="form-label" autocomplete="off">First name</label>
-                <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ $member->name }}">
+                <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ ucfirst($member->name) }}">
 
                 @error('name')
                     <p class="mt-1 invalid-feedback fw-bold">{{ $message }}</p>
@@ -47,7 +47,7 @@
 
             <div class="mb-4">
                 <label for="surname" class="form-label">Last name</label>
-                <input type="text" name="surname" id="surname" class="form-control @error('surname') is-invalid @enderror" value="{{ $member->surname }}">
+                <input type="text" name="surname" id="surname" class="form-control @error('surname') is-invalid @enderror" value="{{ ucfirst($member->surname) }}">
 
                 @error('surname')
                     <p class="mt-1 invalid-feedback fw-bold">{{ $message }}</p>
@@ -165,7 +165,7 @@
         <div class="col-12 col-lg-8">
             <div class="mb-4">
                 <label for="emergencyContact" class="form-label">Emergency contact name</label>
-                <input type="text" name="emergency_contact" id="emergencyContact" class="form-control @error('emergency_contact') is-invalid @enderror" value="{{ $member->emergency_contact }}">
+                <input type="text" name="emergency_contact" id="emergencyContact" class="form-control @error('emergency_contact') is-invalid @enderror" value="{{ ucwords($member->emergency_contact) }}">
 
                 @error('emergency_contact')
                     <p class="mt-1 invalid-feedback fw-bold">{{ $message }}</p>
