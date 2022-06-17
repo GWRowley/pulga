@@ -41,9 +41,9 @@ class SignUpController extends Controller
 
         // Store user in the database
         User::create([
-            'name' => $request->name,
-            'surname' => $request->surname,
-            'email' => $request->email,
+            'name' => ucwords(strtolower($request->name)),
+            'surname' => ucwords(strtolower($request->surname)),
+            'email' => strtolower($request->email),
             'password' => Hash::make($request->password),
         ]);
 

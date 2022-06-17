@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -18,7 +19,8 @@ class MemberController extends Controller
 
     // All members view
     public function index() {
-        $members = Member::orderBy('name')->orderBy('surname')->paginate(10);
+        $userId = Auth::user()->id;
+        $members = Member::where('user_id',$userId)->orderBy('name')->orderBy('surname')->paginate(10);
         
         return view('members.index', [
             'members' => $members
@@ -77,7 +79,7 @@ class MemberController extends Controller
 
         // Store member in the database
         $request->user()->members()->create([
-            'name' => ucfirst(strtolower($request->name)),
+            'name' => ucwords(strtolower($request->name)),
             'surname' => ucwords(strtolower($request->surname)),
             'dob' => $request->dob,
             'gender' => $request->gender,
@@ -141,8 +143,8 @@ class MemberController extends Controller
             $avatarFileName = $member->avatar;
         }
 
-        $member->name = ucfirst(strtolower($request->name));
-        $member->surname = ucfirst(strtolower($request->surname));
+        $member->name = ucwords(strtolower($request->name));
+        $member->surname = ucwords(strtolower($request->surname));
         $member->dob = $request->dob;
         $member->gender = $request->gender;
         $member->avatar  = $avatarFileName;
