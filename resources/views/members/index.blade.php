@@ -35,8 +35,8 @@
                     @foreach ($members as $member)
                     @if ($member->ownedBy(auth()->user()))
                     <tr>
-                        <td class="align-middle">{{ ucfirst($member->name) }}</td>
-                        <td class="align-middle">{{ ucfirst($member->surname) }}</td>
+                        <td class="align-middle">{{ $member->name }}</td>
+                        <td class="align-middle">{{ $member->surname }}</td>
                         <td class="align-middle">{{ $member->belt }}</td>
                         <td class="align-middle">{{ $member->membership }}</td>
                         <td class="align-middle"><a href="{{ route('members') }}/profile/{{ $member->id}}" class="btn btn-dark" role="button">View</a></td>
