@@ -65,24 +65,29 @@ class MemberController extends Controller
             'medical_information' => 'max:255'            
         ]);
 
-        // Create unique name for each member profile picture
-        $newAvatarName = $request->id . '-' . $request->name . '-' . $request->surname . '.' . $request->avatar->extension();
-        // Add image to the public folder
-        $request->avatar->move(public_path('images/member-avatars'), $newAvatarName);
+        // Check to see if the avatar has a file added
+        if ($request->hasFile('avatar')) {
+        // Create unique file name for each avatar
+        $avatarFileName = strtolower($request->name) . '-' . strtolower($request->surname) . '.' . $request->avatar->extension();
+        // Add avatar to the public folder
+        $request->avatar->move(public_path('images/member-avatars'), $avatarFileName);
+        } else {
+            $avatarFileName = null;
+        }
 
         // Store member in the database
         $request->user()->members()->create([
-            'name' => ucfirst($request->name),
-            'surname' => ucfirst($request->surname),
+            'name' => ucfirst(strtolower($request->name)),
+            'surname' => ucwords(strtolower($request->surname)),
             'dob' => $request->dob,
             'gender' => $request->gender,
-            'avatar' => $newAvatarName,
+            'avatar' => $avatarFileName,
             'belt' => $request->belt,
             'membership' => $request->membership,
             'member_since' => $request->member_since,
-            'emergency_contact' => ucwords($request->emergency_contact),
+            'emergency_contact' => ucwords(strtolower($request->emergency_contact)),
             'emergency_number' => $request->emergency_number,
-            'medical_information' => $request->medical_information    
+            'medical_information' => ucfirst($request->medical_information)    
         ]);
 
         // Redirect to all members and show success message     
@@ -120,27 +125,33 @@ class MemberController extends Controller
             'emergency_contact' => 'required|max:255',
             'emergency_number' => 'required|max:20',
             'medical_information' => 'max:255'
-        ]);
-
-        // Create unique name for each member profile picture
-        $newAvatarName = $request->id . '-' . $request->name . '-' . $request->surname . '.' . $request->avatar->extension();
-        // Add image to the public folder
-        $request->avatar->move(public_path('images/member-avatars'), $newAvatarName);
+        ]); 
 
         // Updating the member record
         $member = Member::findOrFail($id);
 
-        $member->name = $request->name;
-        $member->surname = $request->surname;
+        // Check to see if avatar field is not empty
+        if ($request->hasFile('avatar')) {
+            // If file added, create unique file name for avatar
+            $avatarFileName = strtolower($request->name) . '-' . strtolower($request->surname) . '.' . $request->avatar->extension();
+            // Add avatar to the public folder
+            $request->avatar->move(public_path('images/member-avatars'), $avatarFileName);
+        } else {
+            // Else, use the avatar from before
+            $avatarFileName = $member->avatar;
+        }
+
+        $member->name = ucfirst(strtolower($request->name));
+        $member->surname = ucfirst(strtolower($request->surname));
         $member->dob = $request->dob;
         $member->gender = $request->gender;
-        $member->avatar  = $newAvatarName;
+        $member->avatar  = $avatarFileName;
         $member->belt = $request->belt;
         $member->membership = $request->membership;
         $member->member_since = $request->member_since;
-        $member->emergency_contact = $request->emergency_contact;
+        $member->emergency_contact = ucwords(strtolower($request->emergency_contact));
         $member->emergency_number = $request->emergency_number;
-        $member->medical_information = $request->medical_information;
+        $member->medical_information = ucfirst($request->medical_information);
 
         $member->update();
 

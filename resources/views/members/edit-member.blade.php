@@ -89,15 +89,23 @@
             <fieldset class="mb-4">
                 <label for="avatar" class="form-label d-block">Profile picture</label>
 
-                @if ($member->avatar )
-                <div class="member-profile-image mb-2">
-                    <img src="{{ asset('images/member-avatars/' . $member->avatar) }}" class="rounded-circle img-thumbnail d-inline-block" alt="{{ $member->name }} {{ $member->surname }}">
+                <div class="d-flex flex-row align-items-center">
+                    @if ($member->avatar )
+                    <div class="member-profile-image mb-2">
+                        <img src="{{ asset('images/member-avatars/' . $member->avatar) }}" class="rounded-circle img-thumbnail d-inline-block" alt="{{ $member->name }} {{ $member->surname }}">
+                    </div>
+                    <!--
+                    <p>
+                        <a href="#">Edit</a> or <a href="#">Delete</a>
+                    </p> -->
+                    @endif
+                    <div class="float-start @if (! $member->avatar )w-100 @endif">
+                        <input type="file" accept="image/*" name="avatar" id="avatar" class="form-control @error('avatar') is-invalid @enderror" value="{{ $member->avatar }}">
+                        <div id="avatar-help" class="form-text">Your file should be a .jpg, .jpeg or .png and less than 5MB in size.</div>
+                    </div>                
                 </div>
-                @endif
 
-                <input type="file" accept="image/*" name="avatar" id="avatar" class="form-control @error('avatar') is-invalid @enderror">
-                <div id="avatar-help" class="form-text">Your file should be a .jpg, .jpeg or .png and less than 5MB in size.</div>
-
+               
                 @error('avatar')
                     <p class="mt-1 invalid-feedback fw-bold">{{ $message }}</p>
                 @enderror
@@ -106,7 +114,7 @@
         
         <hr> <!-- End of personal information -->
 
-                <div class="col-12 col-lg-4">
+        <div class="col-12 col-lg-4">
             <h2 class="fs-5">Membership information</h2>
             <p>This is basic information about the member.</p>
         </div>
