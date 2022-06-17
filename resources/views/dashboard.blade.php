@@ -34,7 +34,7 @@
                 Comeptitions
             </h2>
 
-            <a href="#" class="btn btn-dark" role="button">View competitions</a>
+            <a href="{{ route('competitions') }}" class="btn btn-dark" role="button">View competitions</a>
         </div>
     </div>
 

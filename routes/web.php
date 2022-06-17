@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\TimetableController;
+use App\Http\Controllers\CompetitionController;
 
 // Home
 Route::get('/', function () {
@@ -45,6 +46,7 @@ Route::get('/members/delete-member/{id}', [MemberController:: class, 'delete'])-
 // Timetable
 Route::get('/timetable', [TimetableController:: class, 'index'])->name('timetable');
 
-// Competitions - needs controller and adding at top to use
+// Competitions
+Route::get('/competitions', [CompetitionController:: class, 'index'])->name('competitions');
 
 // Reports - needs controller and adding at top to use
