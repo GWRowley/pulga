@@ -6,6 +6,7 @@ use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File; 
 use App\Models\Member;
 use App\Models\User;
 
@@ -172,10 +173,8 @@ class MemberController extends Controller
             $member->delete();     
 
             // Delete member avatar file from folder on deletion of member
-            $avatar = Member::find($member->avatar);
-            unlink(public_path('images/member-avatars/' . $member->avatar));
-            Member::where("avatar", $member->avatar)->delete();
-
+            File::delete(public_path('images/member-avatars/' . $member->avatar));
+        
             // Redirect to all members and show success message     
             return redirect()->route('members')->with('success', 'Member deleted');
         } else {
