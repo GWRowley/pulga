@@ -13,7 +13,24 @@
         </nav>
         <div class="clearfix mb-4">
             <h1 class="mb-0 lh-1 float-start">Competitions</h1>
-            <a href="#" class="btn btn-dark float-end" role="button">Add new competition</a>
+            <a href="#" class="btn btn-dark float-end" role="button">Add a competition</a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <p class="nav-link active" aria-current="page" href="#">Upcoming competitions</p>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link link-dark" href="#">Past competitions</a>
+            </li>
+        </ul>
+
+        <div class="competitions-body">
+            <p>No competitions found.</p>
         </div>
     </div>
 </div>

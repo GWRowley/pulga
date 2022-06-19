@@ -148,3 +148,16 @@ label.form-check-label {
 	content: none;
 	background-color: transparent;
 }
+
+/* Competitions */
+
+.competitions-body {
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-top: 0px;
+    padding: 30px 15px;
+}
+
+.competitions-body p:last-of-type {
+    margin-bottom: 0px;
+}

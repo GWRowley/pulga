@@ -41,7 +41,6 @@ class MemberController extends Controller
         } else {
             return redirect()->route('members')->with('danger', 'You are not authorised to view this member');
         }
-        
     }
 
     // Add members view
@@ -110,7 +109,6 @@ class MemberController extends Controller
         } else {
             return redirect()->route('members')->with('danger', 'You are not authorised to edit this member');
         }
-
     }
 
     // Edit and update member
@@ -169,15 +167,19 @@ class MemberController extends Controller
     public function delete($id) {
         $member = Member::findOrFail($id);
 
-        // Delete member if they are one of your members, else redirect
         if ($member->ownedBy(auth()->user())) {
+            // Delete member if they are one of your members
             $member->delete();     
+
+            // Delete member avatar file from folder on deletion of member
+            $avatar = Member::find($member->avatar);
+            unlink(public_path('images/member-avatars/' . $member->avatar));
+            Member::where("avatar", $member->avatar)->delete();
 
             // Redirect to all members and show success message     
             return redirect()->route('members')->with('success', 'Member deleted');
         } else {
             return redirect()->route('members')->with('danger', 'You are not authorised to delete this member');
         }
-        
     }
 }

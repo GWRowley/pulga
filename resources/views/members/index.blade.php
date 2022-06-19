@@ -13,7 +13,7 @@
         </nav>
         <div class="clearfix mb-4">
             <h1 class="mb-0 lh-1 float-start">Members</h1>
-            <a href="{{ route('add-new-member') }}" class="btn btn-dark float-end" role="button">Add new member</a>
+            <a href="{{ route('add-new-member') }}" class="btn btn-dark float-end" role="button">Add a member</a>
         </div>
     </div>
 </div>

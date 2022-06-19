@@ -11,20 +11,20 @@
     <div class="col-12 col-lg-4">
         <div class="content-panel bg-white shadow-sm">
             <h2 class="mb-4 fs-4">
-                Members
+                Timetable
             </h2>
 
-            <a href="{{ route('members') }}" class="btn btn-dark" role="button">View members</a>
+            <a href="{{ route('timetable') }}" class="btn btn-dark" role="button">View timetable</a>
         </div>
     </div>
 
     <div class="col-12 col-lg-4">
         <div class="content-panel bg-white shadow-sm">
             <h2 class="mb-4 fs-4">
-                Timetable
+                Members
             </h2>
 
-            <a href="{{ route('timetable') }}" class="btn btn-dark" role="button">View timetable</a>
+            <a href="{{ route('members') }}" class="btn btn-dark" role="button">View members</a>
         </div>
     </div>
 
@@ -38,14 +38,5 @@
         </div>
     </div>
 
-    {{-- <div class="col-12 col-lg-4">
-        <div class="content-panel bg-white shadow-sm">
-            <h2 class="mb-4 fs-4">
-                Reports
-            </h2>
-
-            <a href="#" class="btn btn-dark" role="button">View reports</a>
-        </div>
-    </div> --}}
 </div>
 @endsection

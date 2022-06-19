@@ -13,7 +13,7 @@
         </nav>
         <div class="clearfix mb-4">
             <h1 class="mb-0 lh-1 float-start">Timetable</h1>
-            <a href="#" class="btn btn-dark float-end" role="button">Add new class</a>
+            <a href="#" class="btn btn-dark float-end" role="button">Add a class</a>
         </div>
     </div>
 </div>
