@@ -86,7 +86,11 @@
                 @enderror
             </fieldset>
 
-            <fieldset class="mb-4">
+            <div>
+                <input type="hidden" name="avatar_id" id="avatarId" class="form-control @error('avatar_id') is-invalid @enderror" value="{{ $member->avatar_id }}">
+            </div>
+
+            <div class="mb-4">
                 <label for="avatar" class="form-label d-block">Profile picture</label>
 
                 <div class="d-flex flex-row align-items-center">
@@ -94,10 +98,6 @@
                     <div class="member-profile-image mb-2">
                         <img src="{{ asset('images/member-avatars/' . $member->avatar) }}" class="rounded-circle img-thumbnail d-inline-block" alt="{{ $member->name }} {{ $member->surname }}">
                     </div>
-                    <!--
-                    <p>
-                        <a href="#">Edit</a> or <a href="#">Delete</a>
-                    </p> -->
                     @endif
                     <div class="float-start @if (! $member->avatar )w-100 @endif">
                         <input type="file" accept="image/*" name="avatar" id="avatar" class="form-control @error('avatar') is-invalid @enderror" value="{{ $member->avatar }}">
@@ -109,7 +109,7 @@
                 @error('avatar')
                     <p class="mt-1 invalid-feedback fw-bold">{{ $message }}</p>
                 @enderror
-            </fieldset>
+            </div>
         </div>
         
         <hr> <!-- End of personal information -->

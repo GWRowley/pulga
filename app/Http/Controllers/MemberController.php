@@ -58,6 +58,7 @@ class MemberController extends Controller
             'surname' => 'required|max:255',
             'dob' => 'required|before_or_equal:today',
             'gender' => 'required|max:6',
+            'avatar_id' => 'required',
             'avatar' => 'mimes:jpg,png,jpeg|max:5048',
             'belt' => 'required|max:6',
             'membership' => 'required|max:255',
@@ -70,7 +71,7 @@ class MemberController extends Controller
         // Check to see if the avatar has a file added
         if ($request->hasFile('avatar')) {
         // Create unique file name for each avatar
-        $avatarFileName = strtolower($request->name) . '-' . strtolower($request->surname) . '.' . $request->avatar->extension();
+        $avatarFileName = strtolower($request->name) . '-' . strtolower($request->surname) . '-' . $request->avatar_id . '.' . $request->avatar->extension();
         // Add avatar to the public folder
         $request->avatar->move(public_path('images/member-avatars'), $avatarFileName);
         } else {
@@ -83,6 +84,7 @@ class MemberController extends Controller
             'surname' => ucwords(strtolower($request->surname)),
             'dob' => $request->dob,
             'gender' => $request->gender,
+            'avatar_id' => $request->avatar_id,
             'avatar' => $avatarFileName,
             'belt' => $request->belt,
             'membership' => $request->membership,
@@ -121,6 +123,7 @@ class MemberController extends Controller
             'dob' => 'required|before_or_equal:today',
             'gender' => 'required|max:6',
             'avatar' => 'mimes:jpg,png,jpeg|max:5048',
+            'avatar_id' => 'required',
             'belt' => 'required|max:6',
             'membership' => 'required|max:255',
             'member_since' => 'required|before_or_equal:today',
@@ -135,7 +138,7 @@ class MemberController extends Controller
         // Check to see if avatar field is not empty
         if ($request->hasFile('avatar')) {
             // If file added, create unique file name for avatar
-            $avatarFileName = strtolower($request->name) . '-' . strtolower($request->surname) . '.' . $request->avatar->extension();
+            $avatarFileName = strtolower($request->name) . '-' . strtolower($request->surname) . '-' . $request->avatar_id . '.' . $request->avatar->extension();
             // Add avatar to the public folder
             $request->avatar->move(public_path('images/member-avatars'), $avatarFileName);
         } else {
@@ -147,6 +150,7 @@ class MemberController extends Controller
         $member->surname = ucwords(strtolower($request->surname));
         $member->dob = $request->dob;
         $member->gender = $request->gender;
+        $member->avatar_id  = $request->avatar_id;
         $member->avatar  = $avatarFileName;
         $member->belt = $request->belt;
         $member->membership = $request->membership;

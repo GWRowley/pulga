@@ -78,7 +78,11 @@
                 @enderror
             </fieldset>
 
-            <fieldset class="mb-4">
+             <div>
+                <input type="hidden" name="avatar_id" id="avatarId" class="form-control @error('avatar_id') is-invalid @enderror" value="{{ time() }}">
+            </div>
+
+            <div class="mb-4">
                 <label for="avatar" class="form-label">Profile picture</label>
                 <input type="file" accept="image/*" name="avatar" id="avatar" class="form-control @error('avatar') is-invalid @enderror" value="{{ old('avatar') }}">
                 <div id="avatar-help" class="form-text">Your file should be a .jpg, .jpeg or .png and less than 5MB in size.</div>
@@ -86,7 +90,7 @@
                 @error('avatar')
                     <p class="mt-1 invalid-feedback fw-bold">{{ $message }}</p>
                 @enderror
-            </fieldset>
+            </div>
         </div>
         
         <hr> <!-- End of personal information -->
