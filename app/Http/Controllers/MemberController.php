@@ -21,8 +21,14 @@ class MemberController extends Controller
     // All members view
     public function index() {
         $userId = Auth::user()->id;
-        $members = Member::where('user_id',$userId)->orderBy('name')->orderBy('surname')->paginate(10);
-        
+        $search = request()->query('search');
+
+        if ($search) {
+            $members = Member::where('name', 'LIKE', "%{$search}%")->orWhere('surname', 'LIKE', "%{$search}%")->orderBy('name')->orderBy('surname')->paginate(10);
+        } else {
+            $members = Member::where('user_id',$userId)->orderBy('name')->orderBy('surname')->paginate(10);
+        }
+
         return view('members.index', [
             'members' => $members
         ]);

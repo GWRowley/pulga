@@ -63,6 +63,30 @@ label.form-check-label {
     top: -1px;
 }
 
+/* Pagination */
+
+.page-link {
+    color: #212529;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+}
+
+.page-link:hover {
+    color: #212529;
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+}
+
+.page-link:focus {
+    box-shadow: 0 0 0 0.15rem rgb(33 37 41 / 25%);
+}
+
+.page-item.active .page-link {
+    color: #fff;
+    background-color: #212529;
+    border-color: #212529;
+}
+
 /* Member profile */
 
 .member-profile-header {
@@ -89,6 +113,11 @@ label.form-check-label {
 
 .member-profile-name p {
     margin-bottom: 0px;
+}
+
+.modal-icon {
+    width: 36px;
+    height: 36px;
 }
 
 /* Timeline */

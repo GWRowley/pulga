@@ -15,7 +15,7 @@
 
         <div class="member-profile-header my-4 clearfix w-100">     
             <div class="member-profile-image">
-                <img src="{{ $member->avatar ? asset('images/member-avatars/' . $member->avatar) : 'https://via.placeholder.com/90' }}" class="rounded-circle img-thumbnail d-inline-block" alt="{{ $member->name }} {{ $member->surname }}">
+                <img src="{{ $member->avatar ? asset('images/member-avatars/' . $member->avatar) : 'https://via.placeholder.com/90?text=' . Str::substr($member->name, 0, 1) . Str::substr($member->surname, 0, 1); }}" class="rounded-circle img-thumbnail d-inline-block" alt="{{ $member->name }} {{ $member->surname }}">
             </div>   
             <div class="member-profile-name">
                 <h1>
@@ -138,18 +138,26 @@
 
 <!-- Delete member modal -->
 <div class="modal fade" id="delete-modal" tabindex="-1" aria-labelledby="delete-modal-title" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-body p-4">
-        <h3 class="fs-4 mb-4" id="delete-modal-title">Delete member</h3>
-        <p>Are you sure you want to delete this member? All of the data associated with this member will be permanently removed. This action cannot be undone.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-light me-3" data-bs-dismiss="modal">Cancel</button>
-        <a href="{{ route('members') }}/delete-member/{{ $member->id }}" class="btn btn-danger">Delete</a>
-      </div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body p-4">
+                <div class="d-flex justify-content-start align-items-center mb-4">
+                    <div class="modal-icon d-flex justify-content-center align-items-center me-3 bg-opacity-25 bg-danger rounded-circle float-start">
+                        <i class="fa-solid fa-triangle-exclamation text-danger" aria-hidden="true"></i>
+                    </div>
+
+                    <h3 class="fs-4 mb-0 d-inline-block" id="delete-modal-title">Delete member</h3>
+                </div>
+            
+                <p>Are you sure you want to delete this member? All of the data associated with this member will be permanently removed. This action cannot be undone.</p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light me-3" data-bs-dismiss="modal">Cancel</button>
+                <a href="{{ route('members') }}/delete-member/{{ $member->id }}" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 @endsection
