@@ -53,4 +53,6 @@ Route::get('/past-competitions', [CompetitionController:: class, 'past'])->name(
 Route::get('competitions/add-competition', [CompetitionController:: class, 'add'])->name('add-competition');
 Route::post('competitions/add-competition', [CompetitionController::class, 'store']);
 
+Route::get('/competitions/event/{id}', [CompetitionController::class, 'event']);
+
 // Reports - needs controller and adding at top to use

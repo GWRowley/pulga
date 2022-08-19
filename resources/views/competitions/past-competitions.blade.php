@@ -30,7 +30,34 @@
         </ul>
 
         <div class="competitions-body">
-            <p>No competitions found.</p>
+            @if ($competitions->count())      
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Title</th>
+                            <th scope="col">Date</th>                            
+                            <th scope="col"><span class="visually-hidden">Actions<span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($competitions as $competition)
+                        @if ($competition->ownedBy(auth()->user()) && $competition->date < $dateNow)
+                        <tr>
+                            <td class="align-middle">{{ $competition->title }}</td>
+                            <td class="align-middle">{{ \Carbon\Carbon::parse($competition->date)->format('jS F Y') }}</td>
+                            <td class="align-middle"><a href="{{ route('competitions') }}/event/{{ $competition->id}}" class="btn btn-link" role="button">View</a></td>
+                        </tr>
+                        @endif
+                        @endforeach                        
+                    </tbody>
+                </table>
+            @else
+                <p>No competitions found.</p>
+            @endif
+        </div>
+
+        <div class="d-flex justify-content-center mt-4">
+            {{ $competitions->links() }}
         </div>
     </div>
 </div>

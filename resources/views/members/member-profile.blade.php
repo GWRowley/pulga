@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('pageTitle', 'Member profile')
+@section('pageTitle', $member->name . ' ' . $member->surname)
 
 @section('content')
 <div class="row">

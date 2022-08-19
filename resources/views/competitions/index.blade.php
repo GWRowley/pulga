@@ -41,11 +41,11 @@
                     </thead>
                     <tbody>
                         @foreach ($competitions as $competition)
-                        @if ($competition->ownedBy(auth()->user()))
+                        @if ($competition->ownedBy(auth()->user()) && $competition->date >= $dateNow)
                         <tr>
                             <td class="align-middle">{{ $competition->title }}</td>
                             <td class="align-middle">{{ \Carbon\Carbon::parse($competition->date)->format('jS F Y') }}</td>
-                            <td class="align-middle"><a href="#" class="btn btn-link" role="button">View</a></td>
+                            <td class="align-middle"><a href="{{ route('competitions') }}/event/{{ $competition->id}}" class="btn btn-link" role="button">View</a></td>
                         </tr>
                         @endif
                         @endforeach                        

@@ -21,16 +21,39 @@ class CompetitionController extends Controller
     // Upcoming competitions view
     public function index() {
         $userId = Auth::user()->id;
-        $competitions = Competition::where('user_id',$userId)->orderBy('title')->paginate(10);
+        $dateNow = Carbon::now()->format('Y-m-d');
+        $competitions = Competition::where('user_id',$userId)->orderBy('date')->paginate(10);
 
         return view('competitions.index', [
-            'competitions' => $competitions
+            'competitions' => $competitions,
+            'dateNow' => $dateNow
         ]);
     }
 
     // Past competitions view
     public function past() {
-        return view('competitions.past-competitions');
+        $userId = Auth::user()->id;
+        $dateNow = Carbon::now()->format('Y-m-d');
+        $competitions = Competition::where('user_id',$userId)->orderBy('date')->paginate(10);
+
+        return view('competitions.past-competitions', [
+            'competitions' => $competitions,
+            'dateNow' => $dateNow
+        ]);
+    }
+
+    // View an individual competition
+    public function event($id) {
+        $competition = Competition::findOrFail($id);
+        
+        // Show event details if added by you, else redirect
+        if ($competition->ownedBy(auth()->user())) {
+            return view('competitions.event')->with([
+                'competition' => $competition,
+            ]);
+        } else {
+            return redirect()->route('competitions')->with('danger', 'You are not authorised to view this competition');
+        }
     }
 
     // Add a competition view
