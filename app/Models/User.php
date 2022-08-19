@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Member::class);
     }
+
+    public function competitions()
+    {
+        return $this->hasMany(Competition::class);
+    }
 }

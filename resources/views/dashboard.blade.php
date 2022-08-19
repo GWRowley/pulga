@@ -31,7 +31,7 @@
     <div class="col-12 col-lg-4">
         <div class="content-panel bg-white shadow-sm">
             <h2 class="mb-4 fs-4">
-                Comeptitions
+                Competitions
             </h2>
 
             <a href="{{ route('competitions') }}" class="btn btn-dark" role="button">View competitions</a>

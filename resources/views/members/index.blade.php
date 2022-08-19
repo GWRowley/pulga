@@ -24,7 +24,7 @@
     <div class="col-12">       
         @if ($members->count())
             @if (request()->query('search'))
-                <a href="{{ route('members') }}" class="d-block mb-4"><i class="fa-solid fa-chevron-left me-2" aria-hidden="true"></i>Back to all members</a>
+                <a href="{{ route('members') }}" class="d-block mb-4"><i class="fa-solid fa-chevron-left me-1" aria-hidden="true"></i>Back to all members</a>
             @endif
 
             <form class="input-group mb-3" action="{{ route('members') }}" method="GET">
@@ -58,7 +58,7 @@
             </table>
         @else
             @if (request()->query('search'))
-                <a href="{{ route('members') }}" class="d-block mb-4"><i class="fa-solid fa-chevron-left me-2" aria-hidden="true"></i>Back to all members</a>
+                <a href="{{ route('members') }}" class="d-block mb-4"><i class="fa-solid fa-chevron-left me-1" aria-hidden="true"></i>Back to all members</a>
          
                 <form class="input-group mb-3" action="{{ route('members') }}" method="GET">
                     <input type="text" class="form-control" name="search" placeholder="Search" aria-label="Search" value="{{ request()->query('search') }}">

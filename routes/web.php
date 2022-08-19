@@ -48,5 +48,9 @@ Route::get('/timetable', [TimetableController:: class, 'index'])->name('timetabl
 
 // Competitions
 Route::get('/competitions', [CompetitionController:: class, 'index'])->name('competitions');
+Route::get('/past-competitions', [CompetitionController:: class, 'past'])->name('past-competitions');
+
+Route::get('competitions/add-competition', [CompetitionController:: class, 'add'])->name('add-competition');
+Route::post('competitions/add-competition', [CompetitionController::class, 'store']);
 
 // Reports - needs controller and adding at top to use
