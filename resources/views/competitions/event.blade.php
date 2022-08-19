@@ -29,11 +29,35 @@
                         Edit
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="member-profile-actions">
-                        <li><a class="dropdown-item" href="{{ route('competitions') }}/edit-competition/{{ $competition->id }}">Edit competition</a></li>  
+                        <li><a class="dropdown-item" href="{{ route('competitions') }}/edit-event/{{ $competition->id }}">Edit competition</a></li>  
                         <li><span class="dropdown-item m-0" data-bs-toggle="modal" data-bs-target="#delete-modal" role="button">Delete competition</span></li>     
                     </ul>
                 </div>
             </div>      
+        </div>
+    </div>
+</div>
+
+<!-- Delete member modal -->
+<div class="modal fade" id="delete-modal" tabindex="-1" aria-labelledby="delete-modal-title" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body p-4">
+                <div class="d-flex justify-content-start align-items-center mb-4">
+                    <div class="modal-icon d-flex justify-content-center align-items-center me-3 bg-opacity-25 bg-danger rounded-circle float-start">
+                        <i class="fa-solid fa-triangle-exclamation text-danger" aria-hidden="true"></i>
+                    </div>
+
+                    <h3 class="fs-4 mb-0 d-inline-block" id="delete-modal-title">Delete competition</h3>
+                </div>
+            
+                <p>Are you sure you want to delete this competition? All of the data associated with this competition will be permanently removed. This action cannot be undone.</p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light me-3" data-bs-dismiss="modal">Cancel</button>
+                <a href="{{ route('competitions') }}/delete-event/{{ $competition->id }}" class="btn btn-danger">Delete</a>
+            </div>
         </div>
     </div>
 </div>

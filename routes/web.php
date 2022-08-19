@@ -55,4 +55,8 @@ Route::post('competitions/add-competition', [CompetitionController::class, 'stor
 
 Route::get('/competitions/event/{id}', [CompetitionController::class, 'event']);
 
+Route::get('/competitions/edit-event/{id}', [CompetitionController:: class, 'edit'])->name('edit-competition');
+Route::put('/competitions/update-event/{id}', [CompetitionController:: class, 'update'])->name('update-competition');
+Route::get('/competitions/delete-event/{id}', [CompetitionController:: class, 'delete'])->name('delete-competition');
+
 // Reports - needs controller and adding at top to use

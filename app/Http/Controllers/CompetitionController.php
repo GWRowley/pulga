@@ -62,8 +62,7 @@ class CompetitionController extends Controller
     }
 
     // Storing a new competition
-        public function store(Request $request)
-    {   
+    public function store(Request $request) {   
         // Validation for new competition
         $this->validate($request, [
             'title' => 'required|max:255',
@@ -88,5 +87,65 @@ class CompetitionController extends Controller
 
         // Redirect to all competiions and show success message     
         return redirect()->route('competitions')->with('success', 'Competition added');
+    }
+
+    // Edit competition view
+    public function edit($id) {
+        $competition = Competition::findOrFail($id);
+
+        // Edit competition if it's yours, else redirect
+        if ($competition->ownedBy(auth()->user())) {
+            return view('competitions.edit-event')->with([
+                'competition' => $competition
+            ]);
+        } else {
+            return redirect()->route('competitions')->with('danger', 'You are not authorised to edit this competition');
+        }
+    }
+
+    // Edit and update competition
+    public function update(Request $request, $id) {
+
+        // Validation for updating member
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'date' => 'required|after_or_equal:today',
+            'address_1' => 'max:255',
+            'address_2' => 'max:255',
+            'town_city' => 'max:100',
+            'postcode' => 'max:10',
+            'notes' => 'max:255'      
+        ]); 
+
+        // Updating the competition
+        $competition = Competition::findOrFail($id);
+
+        $competition->title = ucwords(strtolower($request->title));
+        $competition->date = $request->date;
+        $competition->address_1 = ucwords(strtolower($request->address_1));
+        $competition->address_2 = ucwords(strtolower($request->address_2));
+        $competition->town_city = ucwords(strtolower($request->town_city));
+        $competition->postcode = strtoupper($request->postcode);
+        $competition->notes = ucfirst($request->notes);
+
+        $competition->update();
+
+        // Redirect and show success message     
+        return redirect('/competitions/event/' . $id)->with('success', 'Competition updated');
+    }
+
+    // Delete competition
+    public function delete($id) {
+        $competition = Competition::findOrFail($id);
+
+        if ($competition->ownedBy(auth()->user())) {
+            // Delete competition if it's one of yours
+            $competition->delete();     
+        
+            // Redirect to all competitions and show success message     
+            return redirect()->route('competitions')->with('success', 'Competition deleted');
+        } else {
+            return redirect()->route('competitions')->with('danger', 'You are not authorised to delete this competition');
+        }
     }
 }
