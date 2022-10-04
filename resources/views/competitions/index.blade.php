@@ -29,7 +29,7 @@
     @if ($competitions->count())
 
     <div class="dropdown mb-4">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             Upcoming competitions
         </button>
         <ul class="dropdown-menu">
@@ -39,16 +39,7 @@
 
     @foreach ($competitions as $competition)
         @if ($competition->ownedBy(auth()->user()) && $competition->date >= $dateNow)
-            <div class="col-12 col-md-6 col-xl-4 mb-4">
-                <div class="member-card bg-white shadow-sm h-100">                  
-                    <div class="member-card-details">
-                        <h2 class="fs-5">{{ $competition->title }}</h2>
-                        <p class="mb-0">{{ \Carbon\Carbon::parse($competition->date)->format('jS F Y') }}</p>
-
-                        <a href="{{ route('competitions') }}/event/{{ $competition->id}}" class="stretched-link"><span class="visually-hidden">View competition</span></a>
-                    </div>    
-                </div>
-            </div>
+            @include('partials.competition-card')
         @endif      
     @endforeach                        
         

@@ -22,7 +22,7 @@ class CompetitionController extends Controller
     public function index() {
         $userId = Auth::user()->id;
         $dateNow = Carbon::now()->format('Y-m-d');
-        $competitions = Competition::where('user_id',$userId)->orderBy('date')->paginate(10);
+        $competitions = Competition::where('user_id',$userId)->orderBy('date')->paginate(12);
 
         return view('competitions.index', [
             'competitions' => $competitions,
@@ -34,7 +34,7 @@ class CompetitionController extends Controller
     public function past() {
         $userId = Auth::user()->id;
         $dateNow = Carbon::now()->format('Y-m-d');
-        $competitions = Competition::where('user_id',$userId)->orderBy('date')->paginate(10);
+        $competitions = Competition::where('user_id',$userId)->orderBy('date')->paginate(12);
 
         return view('competitions.past-competitions', [
             'competitions' => $competitions,
@@ -106,10 +106,10 @@ class CompetitionController extends Controller
     // Edit and update competition
     public function update(Request $request, $id) {
 
-        // Validation for updating member
+        // Validation for updating competition
         $this->validate($request, [
             'title' => 'required|max:255',
-            'date' => 'required|after_or_equal:today',
+            'date' => 'required',
             'address_1' => 'max:255',
             'address_2' => 'max:255',
             'town_city' => 'max:100',

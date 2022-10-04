@@ -111,7 +111,6 @@ label.form-check-label {
 
 .member-card-details {
     float: left;
-    word-break: brea;
 }
 
 .member-profile-name {
@@ -187,15 +186,11 @@ label.form-check-label {
 
 /* Competitions */
 
-.competitions-body {
-    background-color: #fff;
-    border: 1px solid #dee2e6;
-    border-top: 0px;
-    padding: 30px 15px;
-    border-bottom-right-radius: 0.25rem;
-    border-bottom-left-radius: 0.25rem;
-}
-
-.competitions-body p:last-of-type {
-    margin-bottom: 0px;
+.comp-card {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center !important;
+    padding: 30px;
+    border-radius: 0.25rem;
 }

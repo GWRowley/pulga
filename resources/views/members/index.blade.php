@@ -45,10 +45,8 @@
                             <img src="{{ $member->avatar ? asset('images/member-avatars/' . $member->avatar) : 'https://via.placeholder.com/90?text=' . Str::substr($member->name, 0, 1) . Str::substr($member->surname, 0, 1); }}" class="rounded-circle img-thumbnail d-inline-block" alt="{{ $member->name }} {{ $member->surname }}">
                         </div>
                         <div class="member-card-details">
-                            <h2 class="fs-5">{{ $member->name }} {{ $member->surname }}</h2>
+                            <h2 class="fs-5 mb-1">{{ $member->name }} {{ $member->surname }}</h2>
                             <p class="mb-0">{{ $member->belt }} belt</p>
-                            <p class="mb-0">{{ $member->membership }} membership</p>
-
                             <a href="{{ route('members') }}/profile/{{ $member->id}}" class="stretched-link"><span class="visually-hidden">View member</span></a>
                         </div>    
                     </div>
