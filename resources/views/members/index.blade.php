@@ -28,7 +28,7 @@
         @endif
 
         <form class="input-group mb-4" action="{{ route('members') }}" method="GET">
-            <input type="text" class="form-control" name="search" placeholder="Search" aria-label="Search" value="{{ request()->query('search') }}">
+            <input type="text" class="form-control" name="search" placeholder="Search member" aria-label="Search" value="{{ request()->query('search') }}">
             <button class="btn btn-dark" type="submit"><i class="fas fa-search" aria-hidden="true"></i> Search</button>
         </form>
     </div>
