@@ -29,7 +29,7 @@
             </li>
         </ul>
 
-        <div class="competitions-body">
+        <div class="competitions-body shadow-sm">
             @if ($competitions->count())      
                 <table class="table table-striped">
                     <thead>

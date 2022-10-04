@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('pageTitle', 'Add a competition')
+@section('pageTitle', 'Edit competition')
 
 @section('content')
 <div class="row">

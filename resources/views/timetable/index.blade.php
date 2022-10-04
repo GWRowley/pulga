@@ -17,4 +17,53 @@
         </div>
     </div>
 </div>
+
+<hr class="mb-4">
+
+<div class="row">
+    <div class="col-12">  
+        <div class="content-panel bg-white shadow-sm">
+            <h2 class="h5">
+                Monday
+            </h2>
+
+            <hr class="mb-4">
+
+            <h2 class="h5">
+                Tuesday
+            </h2>
+
+            <hr class="mb-4">
+
+            <h2 class="h5">
+                Wednesday
+            </h2>
+
+            <hr class="mb-4">
+
+            <h2 class="h5">
+                Thursday
+            </h2>
+
+            <hr class="mb-4">
+    
+            <h2 class="h5">
+                Friday
+            </h2>
+
+            <hr class="mb-4">
+    
+            <h2 class="h5">
+                Saturday
+            </h2>
+
+            <hr class="mb-4">
+
+            <h2 class="h5">
+                Sunday
+            </h2>
+        </div>
+    </div>
+</div>
+
 @endsection
