@@ -5,7 +5,7 @@
 @section('content')
 <div class="row">
     <div class="col-12">
-        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+        <nav aria-label="breadrcumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="link-dark"><i class="fa-solid fa-house"></i> <span class="visually-hidden">Dashboard</span></a></li>
                 <li class="breadcrumb-item" aria-current="page">Members</li>
@@ -36,34 +36,28 @@
 @endif
 
 <div class="row">
-    <div class="col-12">
-        <div class="content-panel bg-white shadow-sm mb-4">       
-            @if ($members->count())
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">First name</th>
-                            <th scope="col">Last name</th>
-                            <th scope="col">Belt</th>
-                            <th scope="col" class="d-none d-md-block">Membership</th>
-                            <th scope="col"><span class="visually-hidden">Actions<span></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($members as $member)
-                        @if ($member->ownedBy(auth()->user()))
-                        <tr>
-                            <td class="align-middle">{{ $member->name }}</td>
-                            <td class="align-middle">{{ $member->surname }}</td>
-                            <td class="align-middle">{{ $member->belt }}</td>
-                            <td class="align-middle d-none d-md-table-cell">{{ $member->membership }}</td>
-                            <td class="align-middle"><a href="{{ route('members') }}/profile/{{ $member->id}}" class="btn btn-link" role="button">View</a></td>
-                        </tr>
-                        @endif
-                        @endforeach                        
-                    </tbody>
-                </table>
-            @else
+    @if ($members->count())
+        @foreach ($members as $member)
+            @if ($member->ownedBy(auth()->user()))
+                <div class="col-12 col-md-6 col-xl-4 mb-4">
+                    <div class="member-card bg-white shadow-sm h-100">                   
+                        <div class="member-card-image">
+                            <img src="{{ $member->avatar ? asset('images/member-avatars/' . $member->avatar) : 'https://via.placeholder.com/90?text=' . Str::substr($member->name, 0, 1) . Str::substr($member->surname, 0, 1); }}" class="rounded-circle img-thumbnail d-inline-block" alt="{{ $member->name }} {{ $member->surname }}">
+                        </div>
+                        <div class="member-card-details">
+                            <h2 class="fs-5">{{ $member->name }} {{ $member->surname }}</h2>
+                            <p class="mb-0">{{ $member->belt }} belt</p>
+                            <p class="mb-0">{{ $member->membership }} membership</p>
+
+                            <a href="{{ route('members') }}/profile/{{ $member->id}}" class="stretched-link"><span class="visually-hidden">View member</span></a>
+                        </div>    
+                    </div>
+                </div>
+            @endif
+        @endforeach          
+    @else
+        <div class="col-12">
+            <div class="content-panel bg-white shadow-sm mb-4"> 
                 @if (request()->query('search'))
                     <a href="{{ route('members') }}" class="d-block mb-4"><i class="fa-solid fa-chevron-left me-1" aria-hidden="true"></i>Back to all members</a>
             
@@ -72,16 +66,22 @@
                         <button class="btn btn-dark" type="submit"><i class="fas fa-search" aria-hidden="true"></i> Search</button>
                     </form> 
                     <p class="bold fs-3">No results found.</p>
-                    <p>We can't find any members with that term at the moment, try searching for something else.</p> 
+                    <p class="mb-0">We can't find any members with that term at the moment, try searching for something else.</p>
                 @else
-                    <p>No members found.</p>
+                    <p class="mb-0">No members found.</p>
                 @endif
-            @endif
+            </div>
         </div>
+    @endif
+</div>
 
-        <div class="d-flex justify-content-center">
-            {{ $members->appends(['search' => request()->query('search')])->links() }}
-        </div>
-    </div>
+<div class="d-flex justify-content-center">
+    {{ $members->appends(['search' => request()->query('search')])->links() }}
+</div>
+    
 </div>
 @endsection
+<script>
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+</script>

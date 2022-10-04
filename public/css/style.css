@@ -49,20 +49,6 @@ label.form-check-label {
     margin-bottom: 1rem;
 }
 
-/* Breadcrumbs */
-
-.breadcrumb-item+.breadcrumb-item {
-    padding-left: 0.75rem;
-}
-
-.breadcrumb-item+.breadcrumb-item::before {
-    float: left;
-    padding-right: 0.75rem;
-    color: #6c757d;
-    position: relative;
-    top: -1px;
-}
-
 /* Pagination */
 
 .page-link {
@@ -87,7 +73,21 @@ label.form-check-label {
     border-color: #212529;
 }
 
-/* Member profile */
+/* Members */
+
+.member-card {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center !important;
+    padding: 30px 15px;
+    border-radius: 0.25rem;    
+}
+
+.member-card img {
+    height: 90px;
+    width: 90px;
+}
 
 .member-profile-header {
     display: flex;
@@ -95,6 +95,7 @@ label.form-check-label {
     align-items: center!important;
 }
 
+.member-card-image,
 .member-profile-image {
     float: left;
     height: 100%;
@@ -102,9 +103,15 @@ label.form-check-label {
     margin-right: 1rem;
 }
 
+.member-card-image img,
 .member-profile-image img {
     height: 90px;
     width: 90px;
+}
+
+.member-card-details {
+    float: left;
+    word-break: brea;
 }
 
 .member-profile-name {

@@ -10,7 +10,7 @@
     
     <!-- Stylesheets -->
     <script src="https://kit.fontawesome.com/70d9f29416.js" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css">
     
     <title>@yield('pageTitle') | Kimono</title>
@@ -60,7 +60,7 @@
                     <ul class="dropdown-menu" aria-labelledby="user-actions">
                         <li><a class="dropdown-item" href="#">Settings</a></li>
                         <li>
-                            <form action="{{ route('sign-out') }}" method="post">
+                            <form action="{{ route('sign-out') }}" method="post" class="mb-0">
                                 @csrf
                                 <button type="submit" class="btn btn-link dropdown-item rounded-0">Sign out</button>
                             </form>
@@ -106,7 +106,6 @@
         </div>
 
     </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
 </html>
