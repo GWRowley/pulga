@@ -38,6 +38,16 @@
     </div>
 </div>
 
+<div class="row">
+    <div class="col-12 col-lg-8">
+        <div class="content-panel bg-white shadow-sm mb-4">
+            <h2 class="lh-1 fs-4">Competition details</h2>
+            <p>Location and any additional notes</p>
+            <hr class="mb-4">
+        </div>
+    </div>
+</div>
+
 <!-- Delete member modal -->
 <div class="modal fade" id="delete-modal" tabindex="-1" aria-labelledby="delete-modal-title" aria-hidden="true">
     <div class="modal-dialog">

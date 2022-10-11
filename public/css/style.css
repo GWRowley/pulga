@@ -49,6 +49,20 @@ label.form-check-label {
     margin-bottom: 1rem;
 }
 
+/* CKEditor */
+
+.cke,
+.cke_top,
+.cke_inner,
+.cke_contents {
+    border-radius: 8px;
+}
+
+.cke_top {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
 /* Pagination */
 
 .page-link {
@@ -118,6 +132,11 @@ label.form-check-label {
 }
 
 .member-profile-name p {
+    margin-bottom: 0px;
+}
+
+.medical-conditions p:last-of-type,
+.medical-conditions ul:last-of-type {
     margin-bottom: 0px;
 }
 

@@ -87,15 +87,15 @@
                     <p>{{ $member->emergency_number }}</p>
                 </div>
                 
-                <div class="col-12">
+                <div class="col-12 medical-conditions">
                     <p class="fw-bold mb-0">Medical conditions</p>
-                    <p class="mb-0">
-                        @if ($member->medical_information)
-                        {{ $member->medical_information }}
-                        @else 
-                        N/A
-                        @endif
-                    </p>
+                    @if ($member->medical_information)
+                        {!! $member->medical_information !!}
+                    @else 
+                        <p class="mb-0">
+                            N/A
+                        </p>
+                    @endif
                 </div>
             </div>
         </div>

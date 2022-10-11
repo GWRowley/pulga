@@ -66,12 +66,12 @@ class CompetitionController extends Controller
         // Validation for new competition
         $this->validate($request, [
             'title' => 'required|max:255',
-            'date' => 'required|after_or_equal:today',
-            'address_1' => 'max:255',
+            'date' => 'required',
+            'address_1' => 'required|max:255',
             'address_2' => 'max:255',
-            'town_city' => 'max:100',
-            'postcode' => 'max:10',
-            'notes' => 'max:255'            
+            'town_city' => 'required|max:100',
+            'postcode' => 'required|max:10',
+            'notes' => 'max:255'           
         ]);
 
         // Store competition in the database
@@ -110,10 +110,10 @@ class CompetitionController extends Controller
         $this->validate($request, [
             'title' => 'required|max:255',
             'date' => 'required',
-            'address_1' => 'max:255',
+            'address_1' => 'required|max:255',
             'address_2' => 'max:255',
-            'town_city' => 'max:100',
-            'postcode' => 'max:10',
+            'town_city' => 'required|max:100',
+            'postcode' => 'required|max:10',
             'notes' => 'max:255'      
         ]); 
 

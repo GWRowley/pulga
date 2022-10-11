@@ -105,7 +105,7 @@
 
         <div class="col-12 col-lg-8">
             <div class="mb-4">
-                <label for="notes" class="form-label">Notes</label>
+                <label for="notes" class="ckeditor form-label">Notes</label>
                 <textarea rows="3" name="notes" id="notes" class="form-control">{{ $competition->notes }}</textarea>
             </div>
         </div>
@@ -115,4 +115,13 @@
         </div>
     </div>
 </form>
+@endsection
+
+@section('scripts')
+<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.ckeditor').ckeditor();
+    });
+</script>
 @endsection

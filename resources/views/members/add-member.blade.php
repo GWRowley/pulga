@@ -188,7 +188,7 @@
 
             <div class="mb-4">
                 <label for="medicalInformation" class="form-label">Medical conditions</label>
-                <textarea rows="3" name="medical_information" id="medicalInformation" class="form-control">{{ old('medical_information') }}</textarea>
+                <textarea rows="3" name="medical_information" id="medicalInformation" class="ckeditor form-control">{{ old('medical_information') }}</textarea>
                 <div id="medical-info-help" class="form-text">This field is optional, only add details if necessary.</div>
             </div>
         </div>
@@ -198,4 +198,13 @@
         </div>
     </div>
 </form>
+@endsection
+
+@section('scripts')
+<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.ckeditor').ckeditor();
+    });
+</script>
 @endsection
