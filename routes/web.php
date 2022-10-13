@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\SignOutController;
 use App\Http\Controllers\Auth\SignUpController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AcademyController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\TimetableController;
 use App\Http\Controllers\CompetitionController;
@@ -31,6 +32,10 @@ Route::get('/forgot-password', [ForgotPasswordController::class, 'index'])->name
 
 // Dashboard
 Route::get('/dashboard', [DashboardController:: class, 'index'])->name('dashboard');
+
+// Academy
+Route::get('/create-academy', [AcademyController:: class, 'create'])->name('create-academy');
+Route::post('/create-academy', [AcademyController::class, 'store']);
 
 // Members
 Route::get('/members', [MemberController:: class, 'index'])->name('members');

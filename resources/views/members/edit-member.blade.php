@@ -19,7 +19,7 @@
             </ol>
         </nav>
         
-        <div class="mb-4 d-flex align-items-center">
+        <div class="mb-2 d-flex align-items-center">
             <h1 class="fs-2 mb-0 lh-1">Edit member</h1>
             <a href="{{ route('members') }}/profile/{{ $member->id}}" class="btn btn-dark ms-auto" role="button">Cancel</a>
         </div>

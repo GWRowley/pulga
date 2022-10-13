@@ -44,14 +44,13 @@
             <h2 class="lh-1 fs-4">Competition details</h2>
             <p>Information on the competition rules</p>
             <hr class="mb-4">
-
-                 @if ($competition->information)
-                    {!! $competition->information !!}
-                @else 
-                    <p class="mb-0">
-                        No information provided. To add information for this competition, use the edit functionality on this page.
-                    </p>
-                @endif
+            @if ($competition->information)
+                {!! $competition->information !!}
+            @else 
+                <p class="mb-0">
+                    No information provided. To add information for this competition, use the edit functionality on this page.
+                </p>
+            @endif
         </div>
 
         <div class="content-panel bg-white shadow-sm mb-4">

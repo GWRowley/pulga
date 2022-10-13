@@ -11,7 +11,7 @@
                 <li class="breadcrumb-item" aria-current="page">Timetable</li>
             </ol>
         </nav>
-        <div class="clearfix mb-4">
+        <div class="clearfix mb-2">
             <h1 class="mb-0 lh-1 float-start">Timetable</h1>
             <a href="#" class="btn btn-dark float-end" role="button">Add a class</a>
         </div>
@@ -22,7 +22,7 @@
 
 <div class="row">
     <div class="col-12">  
-        <div class="content-panel bg-white shadow-sm">
+        <div class="content-panel bg-white shadow-sm mb-4">
             <h2 class="h5">
                 Monday
             </h2>

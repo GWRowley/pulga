@@ -17,7 +17,7 @@
             </ol>
         </nav>
 
-        <h1 class="mb-4 fs-2">Add new member</h1>
+        <h1 class="mb-2 fs-2">Add new member</h1>
     </div>
 </div>
 
@@ -101,7 +101,7 @@
 
         <div class="col-12 col-lg-4">
             <h2 class="fs-5">Membership information</h2>
-            <p>This is basic information about the member.</p>
+            <p>Current belt, membership level and status.</p>
         </div>
 
         <div class="col-12 col-lg-8">
@@ -168,7 +168,7 @@
 
         <div class="col-12 col-lg-4">
             <h2 class="fs-5">Additional information</h2>
-            <p>This is basic information about the member.</p>
+            <p>Medical and emergency contact information.</p>
         </div>
 
         <div class="col-12 col-lg-8">

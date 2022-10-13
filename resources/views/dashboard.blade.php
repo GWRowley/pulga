@@ -37,6 +37,5 @@
             <a href="{{ route('competitions') }}" class="btn btn-dark" role="button">View competitions</a>
         </div>
     </div>
-
 </div>
 @endsection

@@ -18,7 +18,7 @@
                 <li class="breadcrumb-item" aria-current="page">Edit competition</li>
             </ol>
         </nav>
-        <div class="mb-4 d-flex align-items-center">
+        <div class="mb-2 d-flex align-items-center">
             <h1 class="fs-2 mb-0 lh-1">Edit competition</h1>
             <a href="{{ route('competitions') }}/event/{{ $competition->id}}" class="btn btn-dark ms-auto" role="button">Cancel</a>
         </div>

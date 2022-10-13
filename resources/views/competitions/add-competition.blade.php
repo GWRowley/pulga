@@ -17,9 +17,8 @@
                 <li class="breadcrumb-item" aria-current="page">Add a competition</li>
             </ol>
         </nav>
-        <div class="clearfix mb-4">
+        <div class="clearfix mb-2">
             <h1 class="mb-0 lh-1 float-start">Add a competition</h1>
-            
         </div>
     </div>
 </div>
