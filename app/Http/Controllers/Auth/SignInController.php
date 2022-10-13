@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Academy;
+use App\Models\User;
 
 class SignInController extends Controller
 {
@@ -30,7 +33,13 @@ class SignInController extends Controller
         if (!auth()->attempt($request->only('email', 'password'), $request->remember)) {
             return back()->with('status', 'The login details you entered were incorrect');
         }
-        
-        return redirect()->route('dashboard');
+
+        // Redirect them to the dashboard if they have an academy, else
+        // redirect the user to the create academy page.
+        if (Academy::where('user_id', '=', Auth::user()->id)->exists()) {
+            return redirect()->route('dashboard');
+        } else {
+            return redirect()->route('create-academy');
+        }
     }
 }

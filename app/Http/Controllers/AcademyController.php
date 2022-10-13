@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File; 
+use App\Models\Academy;
 use App\Models\User;
 
 class AcademyController extends Controller
@@ -16,10 +17,25 @@ class AcademyController extends Controller
     {
         $this->middleware(['auth']);
     }
+
+    // Dashboard 
+    public function index() {
+        // If you already have an academy, show the dashboard
+        if (Academy::where('user_id', '=', Auth::user()->id)->exists()) {
+            return view('dashboard');            
+        } else {
+            return redirect()->route('create-academy')->with('danger', 'You must create an academy first');
+        }
+    }
         
     // Create academy view
     public function create() {
-        return view('academy.create-academy');
+        // If you already have an academy, redirect with error to dashboard
+        if (Academy::where('user_id', '=', Auth::user()->id)->exists()) {
+            return redirect()->route('dashboard')->with('danger', 'You have already created an academy');
+        } else {
+            return view('academy.create-academy');
+        }
     }
 
     // Storing a new member
