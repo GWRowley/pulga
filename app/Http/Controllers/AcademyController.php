@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\File;
 use App\Models\Academy;
 use App\Models\User;
 
+
 class AcademyController extends Controller
 {
     // Only see if logged in
@@ -20,8 +21,9 @@ class AcademyController extends Controller
 
     // Dashboard 
     public function index() {
+        $hasAcademy = Academy::where('user_id', '=', Auth::user()->id)->exists();
         // If you already have an academy, show the dashboard
-        if (Academy::where('user_id', '=', Auth::user()->id)->exists()) {
+        if ($hasAcademy) {
             return view('dashboard');            
         } else {
             return redirect()->route('create-academy')->with('danger', 'You must create an academy first');
@@ -30,44 +32,51 @@ class AcademyController extends Controller
         
     // Create academy view
     public function create() {
+        $hasAcademy = Academy::where('user_id', '=', Auth::user()->id)->exists();
         // If you already have an academy, redirect with error to dashboard
-        if (Academy::where('user_id', '=', Auth::user()->id)->exists()) {
+        if ($hasAcademy) {
             return redirect()->route('dashboard')->with('danger', 'You have already created an academy');
         } else {
             return view('academy.create-academy');
         }
     }
 
-    // Storing a new member
+    // Storing academy
     public function store(Request $request)
     {   
-        // Validation for new member
-        $this->validate($request, [
-            'name' => 'required|max:255',
-            'head_coach' => 'required|max:255',
-            'avatar_id' => 'required',
-            'avatar' => 'mimes:jpg,png,jpeg|max:5048',    
-        ]);
-
-        // Check to see if the avatar has a file added
-        if ($request->hasFile('avatar')) {
-        // Create unique file name for each avatar
-        $avatarFileName = strtolower($request->name) . '-' . $request->avatar_id . '.' . $request->avatar->extension();
-        // Add avatar to the public folder
-        $request->avatar->move(public_path('images/academy-avatars'), $avatarFileName);
+        $hasAcademy = Academy::where('user_id', '=', Auth::user()->id)->exists();
+        // If you already have an academy, redirect with error to dashboard
+        if ($hasAcademy) {
+            return redirect()->route('dashboard')->with('danger', 'You have already created an academy');
         } else {
-            $avatarFileName = null;
-        }
+            // Validation for new member
+            $this->validate($request, [
+                'name' => 'required|max:255',
+                'head_coach' => 'required|max:255',
+                'avatar_id' => 'required',
+                'avatar' => 'mimes:jpg,png,jpeg|max:5048',    
+            ]);
 
-        // Store academy in the database
-        $request->user()->academy()->create([
-            'name' => ucwords(strtolower($request->name)),
-            'head_coach' => ucwords(strtolower($request->head_coach)),
-            'avatar_id' => $request->avatar_id,
-            'avatar' => $avatarFileName,
-        ]);
+            // Check to see if the avatar has a file added
+            if ($request->hasFile('avatar')) {
+            // Create unique file name for each avatar
+            $avatarFileName = strtolower($request->name) . '-' . $request->avatar_id . '.' . $request->avatar->extension();
+            // Add avatar to the public folder
+            $request->avatar->move(public_path('images/academy-avatars'), $avatarFileName);
+            } else {
+                $avatarFileName = null;
+            }
 
-        // Redirect to dashboard and show success message     
-        return redirect()->route('dashboard')->with('success', 'Academy created');middleware(['auth']);
+            // Store academy in the database
+            $request->user()->academy()->create([
+                'name' => ucwords(strtolower($request->name)),
+                'head_coach' => ucwords(strtolower($request->head_coach)),
+                'avatar_id' => $request->avatar_id,
+                'avatar' => $avatarFileName,
+            ]);
+
+            // Redirect to dashboard and show success message     
+            return redirect()->route('dashboard')->with('success', 'Academy created');middleware(['auth']);
+        }      
     }
 }
