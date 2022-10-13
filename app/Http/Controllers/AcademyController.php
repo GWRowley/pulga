@@ -20,10 +20,14 @@ class AcademyController extends Controller
 
     // Dashboard 
     public function index() {
-        $hasAcademy = Academy::where('user_id', '=', Auth::user()->id)->exists();
+        $userId = Auth::user()->id;
+        $hasAcademy = Academy::where('user_id', $userId)->exists();
+        $academy = Academy::all()->where('user_id', $userId);
         // If you already have an academy, show the dashboard
         if ($hasAcademy) {
-            return view('dashboard');            
+            return view('dashboard', [
+                'academy' => $academy
+            ]);            
         } else {
             return redirect()->route('create-academy')->with('danger', 'You must create an academy first');
         }
@@ -31,7 +35,8 @@ class AcademyController extends Controller
         
     // Create academy view
     public function create() {
-        $hasAcademy = Academy::where('user_id', '=', Auth::user()->id)->exists();
+        $userId = Auth::user()->id;
+        $hasAcademy = Academy::where('user_id', $userId)->exists();
         // If you already have an academy, redirect with error to dashboard
         if ($hasAcademy) {
             return redirect()->route('dashboard')->with('danger', 'You have already created an academy');
@@ -43,7 +48,8 @@ class AcademyController extends Controller
     // Storing academy
     public function store(Request $request)
     {   
-        $hasAcademy = Academy::where('user_id', '=', Auth::user()->id)->exists();
+        $userId = Auth::user()->id;
+        $hasAcademy = Academy::where('user_id', $userId)->exists();
         // If you already have an academy, redirect with error to dashboard
         if ($hasAcademy) {
             return redirect()->route('dashboard')->with('danger', 'You have already created an academy');

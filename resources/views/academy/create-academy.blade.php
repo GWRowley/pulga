@@ -9,14 +9,7 @@
 
 <div class="row">
     <div class="col-12">
-        <nav aria-label="breadrcumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="link-dark"><i class="fa-solid fa-house"></i> <span class="visually-hidden">Dashboard</span></a></li>
-                <li class="breadcrumb-item" aria-current="page">Create academy</li>
-            </ol>
-        </nav>
-
-        <h1 class="mb-2 fs-2">Create academy</h1>
+        <h1 class="my-2 fs-2">Create academy</h1>
     </div>
 </div>
 
