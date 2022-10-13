@@ -3,6 +3,11 @@
 @section('pageTitle', 'Edit competition')
 
 @section('content')
+
+@if($errors->any())
+    @include('partials.error-summary')
+@endif
+
 <div class="row">
     <div class="col-12">
         <nav aria-label="breadrcumb">
@@ -49,6 +54,11 @@
                     <p class="mt-1 invalid-feedback fw-bold">{{ $message }}</p>
                 @enderror
             </div>
+
+            <div class="mb-4">
+                <label for="information" class="ckeditor form-label">Information</label>
+                <textarea rows="3" name="notes" id="information" class="form-control">{{ $competition->information }}</textarea>
+            </div>
         </div>
         
         <hr> <!-- End of competition information -->
@@ -93,20 +103,6 @@
                 @error('postcode')
                     <p class="mt-1 invalid-feedback fw-bold">{{ $message }}</p>
                 @enderror
-            </div>
-        </div>
-
-        <hr> <!-- End of location information -->
-
-        <div class="col-12 col-lg-4">
-            <h2 class="fs-5">Additional information</h2>
-            <p>Any notes or further information about the competition.</p>
-        </div>
-
-        <div class="col-12 col-lg-8">
-            <div class="mb-4">
-                <label for="notes" class="ckeditor form-label">Notes</label>
-                <textarea rows="3" name="notes" id="notes" class="form-control">{{ $competition->notes }}</textarea>
             </div>
         </div>
 

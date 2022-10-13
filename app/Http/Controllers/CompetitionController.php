@@ -22,7 +22,7 @@ class CompetitionController extends Controller
     public function index() {
         $userId = Auth::user()->id;
         $dateNow = Carbon::now()->format('Y-m-d');
-        $competitions = Competition::where('user_id',$userId)->orderBy('date')->paginate(12);
+        $competitions = Competition::where('user_id',$userId)->orderBy('date')->where('date', '>=', $dateNow)->paginate(12);
 
         return view('competitions.index', [
             'competitions' => $competitions,
@@ -34,11 +34,10 @@ class CompetitionController extends Controller
     public function past() {
         $userId = Auth::user()->id;
         $dateNow = Carbon::now()->format('Y-m-d');
-        $competitions = Competition::where('user_id',$userId)->orderBy('date')->paginate(12);
+        $competitions = Competition::where('user_id',$userId)->orderBy('date')->where('date', '<', $dateNow)->paginate(12);
 
         return view('competitions.past-competitions', [
-            'competitions' => $competitions,
-            'dateNow' => $dateNow
+            'competitions' => $competitions
         ]);
     }
 
@@ -70,19 +69,18 @@ class CompetitionController extends Controller
             'address_1' => 'required|max:255',
             'address_2' => 'max:255',
             'town_city' => 'required|max:100',
-            'postcode' => 'required|max:10',
-            'notes' => 'max:255'           
+            'postcode' => 'required|max:10'
         ]);
 
         // Store competition in the database
         $request->user()->competitions()->create([
             'title' => ucwords(strtolower($request->title)),
             'date' => $request->date,
+            'information' => ucfirst($request->information),
             'address_1' => ucwords(strtolower($request->address_1)),
             'address_2' => ucwords(strtolower($request->address_2)),
             'town_city' => ucwords(strtolower($request->town_city)),
-            'postcode' => strtoupper($request->postcode),
-            'notes' => ucfirst($request->notes)    
+            'postcode' => strtoupper($request->postcode) 
         ]);
 
         // Redirect to all competiions and show success message     
@@ -113,8 +111,7 @@ class CompetitionController extends Controller
             'address_1' => 'required|max:255',
             'address_2' => 'max:255',
             'town_city' => 'required|max:100',
-            'postcode' => 'required|max:10',
-            'notes' => 'max:255'      
+            'postcode' => 'required|max:10'
         ]); 
 
         // Updating the competition
@@ -122,11 +119,11 @@ class CompetitionController extends Controller
 
         $competition->title = ucwords(strtolower($request->title));
         $competition->date = $request->date;
+        $competition->information = ucfirst($request->information);
         $competition->address_1 = ucwords(strtolower($request->address_1));
         $competition->address_2 = ucwords(strtolower($request->address_2));
         $competition->town_city = ucwords(strtolower($request->town_city));
         $competition->postcode = strtoupper($request->postcode);
-        $competition->notes = ucfirst($request->notes);
 
         $competition->update();
 

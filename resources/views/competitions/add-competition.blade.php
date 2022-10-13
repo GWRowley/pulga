@@ -3,6 +3,11 @@
 @section('pageTitle', 'Add a competition')
 
 @section('content')
+
+@if($errors->any())
+    @include('partials.error-summary')
+@endif
+
 <div class="row">
     <div class="col-12">
         <nav aria-label="breadrcumb">
@@ -47,6 +52,11 @@
                     <p class="mt-1 invalid-feedback fw-bold">{{ $message }}</p>
                 @enderror
             </div>
+
+            <div class="mb-4">
+                <label for="information" class="form-label">Information</label>
+                <textarea rows="3" name="information" id="information" class="ckeditor form-control">{{ old('information') }}</textarea>
+            </div>
         </div>
         
         <hr> <!-- End of competition information -->
@@ -86,25 +96,11 @@
 
             <div class="mb-4">
                 <label for="postcode" class="form-label" autocomplete="off">Postcode</label>
-                <input type="text" name="postcode" id="postcode" class="form-control @error('postcode') is-invalid @enderror" value="{{ old('postcode') }}">
+                <input type="text" name="postcode" id="postcode" class="form-control w-25 @error('postcode') is-invalid @enderror" value="{{ old('postcode') }}">
 
                 @error('postcode')
                     <p class="mt-1 invalid-feedback fw-bold">{{ $message }}</p>
                 @enderror
-            </div>
-        </div>
-
-        <hr> <!-- End of location information -->
-
-        <div class="col-12 col-lg-4">
-            <h2 class="fs-5">Additional information</h2>
-            <p>Any notes or further information about the competition.</p>
-        </div>
-
-        <div class="col-12 col-lg-8">
-            <div class="mb-4">
-                <label for="notes" class="form-label">Notes</label>
-                <textarea rows="3" name="notes" id="notes" class="ckeditor form-control">{{ old('notes') }}</textarea>
             </div>
         </div>
 

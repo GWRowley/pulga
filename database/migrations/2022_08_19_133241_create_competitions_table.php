@@ -18,11 +18,11 @@ class CreateCompetitionsTable extends Migration
             $table->foreignId('user_id')->onDelete('cascade');
             $table->string('title');
             $table->date('date');
-            $table->string('address_1')->nullable();
+            $table->text('information')->nullable();
+            $table->string('address_1');
             $table->string('address_2')->nullable();
-            $table->string('town_city')->nullable();
-            $table->string('postcode')->nullable();
-            $table->text('notes')->nullable();
+            $table->string('town_city');
+            $table->string('postcode');
             $table->timestamps();
         });
     }

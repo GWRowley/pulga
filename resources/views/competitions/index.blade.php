@@ -38,13 +38,15 @@
     </div>
 
     @foreach ($competitions as $competition)
-        @if ($competition->ownedBy(auth()->user()) && $competition->date >= $dateNow)
-            @include('partials.competition-card')
-        @endif      
+        @include('partials.competition-card')
     @endforeach                        
         
     @else
-        <p>No competitions found.</p>
+        <div class="col-12">
+            <div class="content-panel bg-white shadow-sm"> 
+                <p class="mb-0">No upcoming competitions found.</p>
+            </div>
+        </div>
     @endif
 </div>          
 

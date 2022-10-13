@@ -42,13 +42,44 @@
     <div class="col-12 col-lg-8">
         <div class="content-panel bg-white shadow-sm mb-4">
             <h2 class="lh-1 fs-4">Competition details</h2>
-            <p>Location and any additional notes</p>
+            <p>Information on the competition rules</p>
             <hr class="mb-4">
+
+                 @if ($competition->information)
+                    {!! $competition->information !!}
+                @else 
+                    <p class="mb-0">
+                        No information provided. To add information for this competition, use the edit functionality on this page.
+                    </p>
+                @endif
+        </div>
+
+        <div class="content-panel bg-white shadow-sm mb-4">
+            <h2 class="lh-1 fs-4">Competitors</h2>
+            <p>Members of your gym who are competing at this event</p>
+            <hr class="mb-4">
+        </div>
+    </div>
+
+    <div class="col-12 col-lg-4">
+        <div class="content-panel bg-white shadow-sm mb-4">
+            <h2 class="lh-1 fs-4">Competition location</h2>       
+            <p>Where the competition will be held</p>     
+            <hr class="mb-4">
+
+            <p class="mb-0">{{$competition->address_1}}</p>
+            @if ($competition->address_2)
+            <p class="mb-0">{{$competition->address_2}}</p>
+            @endif
+            <p class="mb-0">{{$competition->town_city}}</p>
+            <p class="mb-0">{{$competition->postcode}}</p>
+   
+            </div>
         </div>
     </div>
 </div>
 
-<!-- Delete member modal -->
+<!-- Delete event modal -->
 <div class="modal fade" id="delete-modal" tabindex="-1" aria-labelledby="delete-modal-title" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

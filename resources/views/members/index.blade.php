@@ -38,20 +38,18 @@
 <div class="row">
     @if ($members->count())
         @foreach ($members as $member)
-            @if ($member->ownedBy(auth()->user()))
-                <div class="col-12 col-md-6 col-xl-4 mb-4">
-                    <div class="member-card bg-white shadow-sm h-100">                   
-                        <div class="member-card-image">
-                            <img src="{{ $member->avatar ? asset('images/member-avatars/' . $member->avatar) : 'https://via.placeholder.com/90?text=' . Str::substr($member->name, 0, 1) . Str::substr($member->surname, 0, 1); }}" class="rounded-circle img-thumbnail d-inline-block" alt="{{ $member->name }} {{ $member->surname }}">
-                        </div>
-                        <div class="member-card-details">
-                            <h2 class="fs-5 mb-1">{{ $member->name }} {{ $member->surname }}</h2>
-                            <p class="mb-0">{{ $member->belt }} belt</p>
-                            <a href="{{ route('members') }}/profile/{{ $member->id}}" class="stretched-link"><span class="visually-hidden">View member</span></a>
-                        </div>    
+            <div class="col-12 col-md-6 col-xl-4 mb-4">
+                <div class="member-card bg-white shadow-sm h-100">                   
+                    <div class="member-card-image">
+                        <img src="{{ $member->avatar ? asset('images/member-avatars/' . $member->avatar) : 'https://via.placeholder.com/90?text=' . Str::substr($member->name, 0, 1) . Str::substr($member->surname, 0, 1); }}" class="rounded-circle img-thumbnail d-inline-block" alt="{{ $member->name }} {{ $member->surname }}">
                     </div>
+                    <div class="member-card-details">
+                        <h2 class="fs-5 mb-1">{{ $member->name }} {{ $member->surname }}</h2>
+                        <p class="mb-0">{{ $member->belt }} belt</p>
+                        <a href="{{ route('members') }}/profile/{{ $member->id}}" class="stretched-link"><span class="visually-hidden">View member</span></a>
+                    </div>    
                 </div>
-            @endif
+            </div>
         @endforeach          
     @else
         <div class="col-12">
@@ -64,7 +62,7 @@
                         <button class="btn btn-dark" type="submit"><i class="fas fa-search" aria-hidden="true"></i> Search</button>
                     </form> 
                     <p class="bold fs-3">No results found.</p>
-                    <p class="mb-0">We can't find any members with that term at the moment, try searching for something else.</p>
+                    <p class="mb-0">We can't find any members with that name, try searching for something else.</p>
                 @else
                     <p class="mb-0">No members found.</p>
                 @endif

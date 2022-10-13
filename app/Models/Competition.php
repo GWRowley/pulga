@@ -11,11 +11,11 @@ class Competition extends Model
     protected $fillable = [
         'title',
         'date',
+        'information',
         'address_1',
         'address_2',
         'town_city',
         'postcode',
-        'notes'
     ];
 
     public function ownedBy(User $user)

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('pageTitle', 'Competitions')
+@section('pageTitle', 'Past competitions')
 
 @section('content')
 <div class="row">
@@ -25,9 +25,7 @@
 
 <hr>
 
-<div class="row">
-    @if ($competitions->count())
-
+<div class="row">   
     <div class="dropdown mb-4">
         <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             Past competitions
@@ -37,15 +35,17 @@
         </ul>
     </div>
 
-    @foreach ($competitions as $competition)
-        @if ($competition->ownedBy(auth()->user()) && $competition->date < $dateNow)
+    @if ($competitions->count())
+        @foreach ($competitions as $competition)
             @include('partials.competition-card')
-        @endif      
-    @endforeach                        
-        
-    @else
-        <p>No competitions found.</p>
-    @endif
+        @endforeach       
+    @else 
+        <div class="col-12">
+            <div class="content-panel bg-white shadow-sm"> 
+                <p class="mb-0">No past competitions found.</p>
+            </div>
+        </div>
+    @endif  
 </div>          
 
 <div class="d-flex justify-content-center mt-4">
