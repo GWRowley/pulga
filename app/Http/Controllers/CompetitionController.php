@@ -6,9 +6,10 @@ use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\Competition;
-use App\Models\Member;
 use App\Models\User;
+use App\Models\Academy;
+use App\Models\Member;
+use App\Models\Competition;
 
 class CompetitionController extends Controller
 {
@@ -23,11 +24,16 @@ class CompetitionController extends Controller
         $userId = Auth::user()->id;
         $dateNow = Carbon::now()->format('Y-m-d');
         $competitions = Competition::where('user_id',$userId)->orderBy('date')->where('date', '>=', $dateNow)->paginate(12);
-
-        return view('competitions.index', [
-            'competitions' => $competitions,
-            'dateNow' => $dateNow
-        ]);
+        $hasAcademy = Academy::where('user_id', '=', Auth::user()->id)->exists();
+       
+        if ($hasAcademy) {
+            return view('competitions.index', [
+                'competitions' => $competitions,
+                'dateNow' => $dateNow
+            ]);
+         } else {
+            return redirect()->route('create-academy')->with('danger', 'You must create an academy first');
+        }
     }
 
     // Past competitions view

@@ -7,8 +7,9 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File; 
-use App\Models\Member;
 use App\Models\User;
+use App\Models\Academy;
+use App\Models\Member;
 
 class MemberController extends Controller
 {
@@ -22,16 +23,21 @@ class MemberController extends Controller
     public function index() {
         $userId = Auth::user()->id;
         $search = request()->query('search');
+        $hasAcademy = Academy::where('user_id', '=', Auth::user()->id)->exists();
+       
+        if ($hasAcademy) {
+            if ($search) {
+                $members = Member::where('user_id',$userId)->where('name', 'LIKE', "%{$search}%")->orWhere('surname', 'LIKE', "%{$search}%")->orderBy('name')->orderBy('surname')->paginate(12);
+            } else {
+                $members = Member::where('user_id',$userId)->orderBy('name')->orderBy('surname')->paginate(12);
+            }
 
-        if ($search) {
-            $members = Member::where('user_id',$userId)->where('name', 'LIKE', "%{$search}%")->orWhere('surname', 'LIKE', "%{$search}%")->orderBy('name')->orderBy('surname')->paginate(12);
+            return view('members.index', [
+                'members' => $members
+            ]);
         } else {
-            $members = Member::where('user_id',$userId)->orderBy('name')->orderBy('surname')->paginate(12);
+            return redirect()->route('create-academy')->with('danger', 'You must create an academy first');
         }
-
-        return view('members.index', [
-            'members' => $members
-        ]);
     }
 
     // View single member profile
