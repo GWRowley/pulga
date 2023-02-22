@@ -26,8 +26,6 @@
 <hr>
 
 <div class="row">
-    @if ($competitions->count())
-
     <div class="dropdown mb-4">
         <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             Upcoming competitions
@@ -36,6 +34,8 @@
             <li><a class="dropdown-item" href="{{ route('past-competitions') }}">Past competitions</a></li>
         </ul>
     </div>
+
+    @if ($competitions->count())
 
     @foreach ($competitions as $competition)
         @include('partials.competition-card')

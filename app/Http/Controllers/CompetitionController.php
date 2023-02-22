@@ -40,7 +40,7 @@ class CompetitionController extends Controller
     public function past() {
         $userId = Auth::user()->id;
         $dateNow = Carbon::now()->format('Y-m-d');
-        $competitions = Competition::where('user_id',$userId)->orderBy('date')->where('date', '<', $dateNow)->paginate(12);
+        $competitions = Competition::where('user_id',$userId)->orderBy('date', 'desc')->where('date', '<', $dateNow)->paginate(12);
 
         return view('competitions.past-competitions', [
             'competitions' => $competitions
